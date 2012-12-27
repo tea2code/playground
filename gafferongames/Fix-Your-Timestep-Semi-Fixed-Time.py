@@ -1,4 +1,5 @@
 import math
+import time
 
 class State:
     def __init__( self, x, v ):
@@ -37,16 +38,29 @@ def integrate( state, t, dt ):
     state.x = state.x + dxdt * dt
     state.v = state.v + dvdt * dt
     return state
-
+    
 def render( state ):
-    print( round(state.x, 4), ", ", round(state.v, 4) )
+    print( 'State (', round(state.x, 4), ',', round(state.v, 4), ')' )
+    
+def hires_time_in_seconds():
+    return time.perf_counter()
     
 state = State( 100, 0 )
+t = 0.0
+dt = 1 / 60
+currentTime = hires_time_in_seconds()
 
-t = 0
-dt = 0.1
+while math.fabs(state.x) > 1 or math.fabs(state.v) > 1:
+    newTime = hires_time_in_seconds()
+    frameTime = newTime - currentTime
+    currentTime = newTime
 
-while math.fabs(state.x) > 0.001 or math.fabs(state.v) > 0.001:
+    while frameTime > 0.0:
+        print( 'Frametime =', '%.10f' % frameTime, 's' )
+        deltaTime = min( frameTime, dt )
+        state = integrate( state, t, frameTime )
+        frameTime -= deltaTime
+        t += deltaTime
+
     render( state )
-    state = integrate( state, t, dt )
-    t += dt
+    time.sleep( 0.011 ) # Simulate high load.
