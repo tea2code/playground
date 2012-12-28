@@ -10,4 +10,5 @@ Little playground for tests with Qt, SFML, Python and physics.
 
 ## References
 
-- <http://gafferongames.com/game-physics/>
+- http://gafferongames.com/game-physics/
+- http://www.sjbrown.co.uk/2002/05/01/quaternions/
