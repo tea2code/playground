@@ -1,4 +1,4 @@
-import data
+from data import data
 import random
 
 def execute():
