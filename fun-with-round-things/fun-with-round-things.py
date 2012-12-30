@@ -1,3 +1,4 @@
+import fpscounter
 import time
 import graphics.graphics
 import physics.physics
@@ -31,11 +32,13 @@ class Fun:
         self.graphics = graphics.graphics.Graphics( self.canvas )
     
         # Initialize fps counter.
-        self.lastTime = time.perf_counter()
-        self.lastFrameTime = 0
-        self.weightRatio = 0.7
+        self.frameCounter = 0
+        self.maxFrameCounts = 300
+        self.fpsCounter = fpscounter.FpsCounter( 1000 )
         
+    def begin( self ):
         # Start.
+        self.fpsCounter.start()
         self.canvas.after( self.loopTime, self.__nextState )
         self.window.mainloop()
     
@@ -44,14 +47,14 @@ class Fun:
         self.physics.tick( self.data )
         self.graphics.tick( self.data )
         
-        currentTime = time.perf_counter()
-        frameTime = currentTime - self.lastTime
-        fps = 1 / (frameTime * self.weightRatio + self.lastFrameTime * (1 - self.weightRatio))
-        self.lastTime = currentTime
-        self.lastFrameTime = frameTime
-        self.window.title( self.windowTitle + ' ' + str(round(fps)) )
+        self.fpsCounter.tick()
+        self.frameCounter += 1
+        if self.frameCounter > self.maxFrameCounts:
+            fps = round( self.fpsCounter.fps() )
+            self.window.title( self.windowTitle + ' (' + str(fps) + ' fps)' )
+            self.frameCounter = 0
         
         self.canvas.after( self.loopTime, self.__nextState )
  
 # Start application. 
-Fun()
+Fun().begin()
