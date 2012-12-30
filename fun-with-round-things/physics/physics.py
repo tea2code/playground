@@ -1,15 +1,17 @@
-from data import data
 import random
+import tickable
 
-def execute():
-    newCircles = []
-    for circle in data.circles:
-        circle.posX += randomInteger()
-        #circle.posY += randomInteger()
-        newCircles.append( circle )
-    data.circles = newCircles
+class Physics( tickable.Tickable ):
+    """ This class calculates the physical reactions of all objects. """
 
-# Returns an integer between -5 and 5.
-def randomInteger():
-    # Create random integer and shift by 5.
-    return round( random.random() * 10 ) - 5 
+    def tick( self, data ):
+        """ Implementation of Tickable.tick().
+
+        Calculates the physic on all objects. """
+        for circle in data.circles:
+            circle.position.x += self.__randomInteger()
+
+    def __randomInteger( self ):
+        """ Private helper method which returns a random integer between -5 and 5. """
+        # Create random integer and shift by 5.
+        return round( random.random() * 10 ) - 5 
