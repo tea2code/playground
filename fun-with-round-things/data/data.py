@@ -6,8 +6,15 @@ class Data:
     circles -- A list of circle objects.
     deltaTime -- The time difference since the last step.
     time -- The accumulated time of all steps.
+    windowHeight -- Height of the window.
+    windowTitle -- Title of the window.
+    windowWidth -- Width of the window.
     """
 
     circles = []
     deltaTime = 0
+    fps = 0
     time = 0
+    windowHeight = 480
+    windowTitle = ''
+    windowWidth = 640

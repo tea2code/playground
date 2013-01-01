@@ -1,9 +1,8 @@
-import fpscounter
+import fps.fps
 import time
-import graphics.graphics
+import graphics.tkgraphics
 import physics.physics
 from data import *
-from tkinter import *
 
 class Fun:
     loopTime = 1
@@ -34,43 +33,31 @@ class Fun:
         self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(220).setRadius(10).setColor('Red') )
         self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(320).setRadius(10).setColor('Yellow') )
         self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(420).setRadius(10).setColor('Violet') )
-
-        # Create window and canvas.
-        self.window = Tk()
-        self.window.title( self.windowTitle )
-        self.canvas = Canvas( self.window, width = self.windowWidth, height = self.windowHeight )
-        self.canvas.pack()
+        self.data.windowHeight = 480
+        self.data.windowTitle = 'Fun with round things'
+        self.data.windowWidth = 640
 
         # Initialize physics.
         self.physics = physics.physics.Physics()
 
         # Initialize graphics.
-        self.graphics = graphics.graphics.Graphics( self.canvas )
+        self.graphics = graphics.tkgraphics.TkGraphics( self.data )
     
         # Initialize fps counter.
-        self.frameCounter = 0
-        self.maxFrameCounts = 300
-        self.fpsCounter = fpscounter.FpsCounter( 1000 )
+        self.fps = fps.fps.Fps( 500, 1000 )
         
     def begin( self ):
         # Start.
-        self.fpsCounter.start()
-        self.canvas.after( self.loopTime, self.__nextState )
-        self.window.mainloop()
+        self.graphics.canvas.after( self.loopTime, self.__nextState )
+        self.graphics.window.mainloop()
     
     def __nextState( self ):
         # Next state.
         self.physics.tick( self.data )
         self.graphics.tick( self.data )
+        self.fps.tick( self.data ) 
         
-        self.fpsCounter.tick()
-        self.frameCounter += 1
-        if self.frameCounter > self.maxFrameCounts:
-            fps = round( self.fpsCounter.fps() )
-            self.window.title( self.windowTitle + ' (' + str(fps) + ' fps)' )
-            self.frameCounter = 0
-        
-        self.canvas.after( self.loopTime, self.__nextState )
+        self.graphics.canvas.after( self.loopTime, self.__nextState )
 
 # Start application. 
 if __name__ == '__main__':
