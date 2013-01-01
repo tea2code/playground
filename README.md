@@ -12,3 +12,4 @@ Little playground for tests with Qt, SFML, Python and physics.
 - http://gafferongames.com/game-physics/
 - http://www.sjbrown.co.uk/2002/05/01/quaternions/
 - http://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/2d.htm
+- http://www.wildbunny.co.uk/blog/
