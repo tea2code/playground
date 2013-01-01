@@ -9,8 +9,12 @@ class Physics( tickable.Tickable ):
 
         Calculates the physic on all objects. """
         for circle in data.circles:
-            circle.position.x += self.__randomInteger()
+            self.__randomMovement( circle )
 
+    def __randomMovement( self, circle ):
+        circle.position.x += self.__randomInteger()
+        circle.position.y += self.__randomInteger()
+            
     def __randomInteger( self ):
         """ Private helper method which returns a random integer between -5 and 5. """
         # Create random integer and shift by 5.
