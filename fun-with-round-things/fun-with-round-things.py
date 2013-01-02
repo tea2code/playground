@@ -38,8 +38,11 @@ class Fun:
         
     def begin( self ):
         # Start.
-        self.graphics.canvas.after( self.loopTime, self.__nextState )
+        self.__callNextState()
         self.graphics.window.mainloop()
+    
+    def __callNextState( self ):
+        self.graphics.canvas.after( self.loopTime, self.__nextState )
     
     def __nextState( self ):
         # Next state.
@@ -47,8 +50,8 @@ class Fun:
         self.graphics.tick( self.data )
         self.fps.tick( self.data ) 
         
-        self.graphics.canvas.after( self.loopTime, self.__nextState )
-
+        self.__callNextState()
+        
 # Start application. 
 if __name__ == '__main__':
     Fun().begin()
