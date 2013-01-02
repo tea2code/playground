@@ -1,5 +1,5 @@
 import random
-import tickable
+from common import tickable
 
 class Physics( tickable.Tickable ):
     """ This class calculates the physical reactions of all objects. """
