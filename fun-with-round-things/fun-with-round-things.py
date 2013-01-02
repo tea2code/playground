@@ -23,16 +23,6 @@ class Fun:
         self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(220).setRadius(10).setColor('Red') )
         self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(320).setRadius(10).setColor('Yellow') )
         self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(420).setRadius(10).setColor('Violet') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(20).setRadius(10).setColor('Green') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(120).setRadius(10).setColor('Blue') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(220).setRadius(10).setColor('Red') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(320).setRadius(10).setColor('Yellow') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(420).setRadius(10).setColor('Violet') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(20).setRadius(10).setColor('Green') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(120).setRadius(10).setColor('Blue') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(220).setRadius(10).setColor('Red') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(320).setRadius(10).setColor('Yellow') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(420).setRadius(10).setColor('Violet') )
         self.data.windowHeight = 480
         self.data.windowTitle = 'Fun with round things'
         self.data.windowWidth = 640
