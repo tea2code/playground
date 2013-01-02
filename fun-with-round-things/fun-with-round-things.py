@@ -1,10 +1,11 @@
 import fps.fps
-import time
 import graphics.tkgraphics
 import physics.physics
+import timestepper
 from data import *
 
 class Fun:
+    frameTime = 1 / 60
     loopTime = 1
     windowHeight = 480
     windowTitle = 'Fun with round things'
@@ -34,22 +35,29 @@ class Fun:
         self.graphics = graphics.tkgraphics.TkGraphics( self.data )
     
         # Initialize fps counter.
-        self.fps = fps.fps.Fps( 500, 1000 )
+        self.fps = fps.fps.Fps( 60, 120 )
+        
+        # Initialize time stepper.
+        self.timestepper = timestepper.Timestepper( self.frameTime, self.calculateNextState )
         
     def begin( self ):
         # Start.
+        self.timestepper.start()
         self.__callNextState()
         self.graphics.window.mainloop()
+    
+    def calculateNextState( self, t, dt ):
+        self.data.deltaTime = dt
+        self.data.time = t
+        self.physics.tick( self.data )
+        self.graphics.tick( self.data )
+        self.fps.tick( self.data ) 
     
     def __callNextState( self ):
         self.graphics.canvas.after( self.loopTime, self.__nextState )
     
     def __nextState( self ):
-        # Next state.
-        self.physics.tick( self.data )
-        self.graphics.tick( self.data )
-        self.fps.tick( self.data ) 
-        
+        self.timestepper.tick()    
         self.__callNextState()
         
 # Start application. 
