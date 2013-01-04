@@ -2,31 +2,26 @@ import fps.fps
 import graphics.tkgraphics
 import physics.physics
 import timestepper
+from common.vector2d import *
 from data import *
 
 class Fun:
-    frameTime = 1 / 60
+    frameTime = 1/20
     loopTime = 1
     windowHeight = 480
     windowTitle = 'Fun with round things'
     windowWidth = 640
 
     def __init__( self ):
-         # Initialize game data.
+        # Initialize game data.
         self.data = data.Data()
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(20).setRadius(10).setColor('Green') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(120).setRadius(10).setColor('Blue') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(220).setRadius(10).setColor('Red') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(320).setRadius(10).setColor('Yellow') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(420).setRadius(10).setColor('Violet') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(20).setRadius(10).setColor('Green') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(120).setRadius(10).setColor('Blue') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(220).setRadius(10).setColor('Red') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(320).setRadius(10).setColor('Yellow') )
-        self.data.circles.append( circle.Circle().setPositionX(200).setPositionY(420).setRadius(10).setColor('Violet') )
-        self.data.windowHeight = 480
+        self.data.acceleration = 14 # Pixel per second^2
+        self.data.circles.append( circle.Circle().setPositionX(20).setPositionY(100).setRadius(10).setColor('Green') )
+        self.data.target = Vector2d( 720, 100 )
+        self.data.timeLimit = 10
+        self.data.windowHeight = 200
         self.data.windowTitle = 'Fun with round things'
-        self.data.windowWidth = 640
+        self.data.windowWidth = 800
 
         # Initialize physics.
         self.physics = physics.physics.Physics()
@@ -39,6 +34,7 @@ class Fun:
         
         # Initialize time stepper.
         self.timestepper = timestepper.Timestepper( self.frameTime, self.calculateNextState )
+        self.timestepper.t = self.frameTime
         
     def begin( self ):
         # Start.

@@ -1,3 +1,5 @@
+from common.vector2d import *
+
 class Data:
     """ This class represents all the data available in the current game which is equivalent to 
     the current state. 
@@ -11,10 +13,13 @@ class Data:
     windowWidth -- Width of the window.
     """
 
+    acceleration = 0
     circles = []
     deltaTime = 0
     fps = 0
+    target = Vector2d.nullVector()
     time = 0
-    windowHeight = 480
+    timeLimit = 0
+    windowHeight = 0
     windowTitle = ''
-    windowWidth = 640
+    windowWidth = 0

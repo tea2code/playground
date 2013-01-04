@@ -1,4 +1,4 @@
-from common import vector2d
+from common.vector2d import *
 
 class Circle:
     """ Class representing a circle. """
@@ -6,9 +6,11 @@ class Circle:
     color = 'black'
     position = None
     radius = 1
+    velocity = None
     
     def __init__( self ):
-        self.position = vector2d.Vector2d.nullVector()
+        self.position = Vector2d.nullVector()
+        self.velocity = Vector2d.nullVector()
 
     def setColor( self, color ):
         """ Sets the color and returns the object. """
@@ -33,6 +35,11 @@ class Circle:
     def setRadius( self, radius ):
         """ Sets the radius and returns the object. """
         self.radius = radius
+        return self
+        
+    def setVelocity( self, velocity ):
+        """ Sets the velocity (vector2d) and returns the object. """
+        self.velocity = velocity
         return self
         
     def __str__( self ):
