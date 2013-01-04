@@ -6,7 +6,7 @@ from common.vector2d import *
 from data import *
 
 class Fun:
-    frameTime = 1/20
+    frameTime = 1/60
     loopTime = 1
     windowHeight = 480
     windowTitle = 'Fun with round things'
