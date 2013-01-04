@@ -1,6 +1,6 @@
 import random
 from .rk4 import *
-from .circlerk4state import *
+from .circlestate import *
 from common import tickable
 
 class Physics( tickable.Tickable ):
@@ -18,11 +18,11 @@ class Physics( tickable.Tickable ):
         
         if data.time < data.timeLimit + 0.00001:
             for circle in data.circles:
-                state = CircleRk4State()
+                state = CircleState()
                 state.x = circle.position.x
                 state.v = circle.velocity.x
                 
-                newState = Rk4.integrate( data.time, data.deltaTime, state, self.__evaluate, CircleRk4State )
+                newState = Rk4.integrate( data.time, data.deltaTime, state, self.__evaluate )
                 circle.position.x = newState.x
                 circle.velocity.x = newState.v
                 
@@ -32,11 +32,11 @@ class Physics( tickable.Tickable ):
           
         self.counter += 1
         
-    def __evaluate( self, t, dt, state, derivative ):
-        new = CircleRk4State()
+    def __evaluate( self, t, dt, state, derivative = CircleState() ):
+        new = CircleState()
         new.x = state.x + derivative.x * dt
         new.v = state.v + derivative.v * dt
-        newDerivative = CircleRk4State()
+        newDerivative = CircleState()
         newDerivative.x = new.v
         newDerivative.v = self.acceleration
         return newDerivative
