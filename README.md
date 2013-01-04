@@ -5,7 +5,6 @@ Little playground for tests with Qt, SFML, Python and physics.
 ## Requirements
 
 - Python 3
-- pygame 1.9.1
 
 ## References
 
