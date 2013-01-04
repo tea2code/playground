@@ -11,9 +11,7 @@ class Derivative:
         self.dv = dv
 
 def acceleration( state, t ):
-    k = 10
-    b = 1
-    return -k * state.x - b * state.v
+    return 10
         
 def evaluate( initial, t, dt, d ):
     x = initial.x + d.dx * dt
@@ -38,15 +36,15 @@ def integrate( state, t, dt ):
     state.v = state.v + dvdt * dt
     return state
 
-def render( state ):
-    print( round(state.x, 4), ", ", round(state.v, 4) )
+def render( t, state ):
+    print( t, round(state.x, 4), round(state.v, 4) )
     
 state = State( 100, 0 )
 
 t = 0
 dt = 0.1
 
-while math.fabs(state.x) > 0.001 or math.fabs(state.v) > 0.001:
-    render( state )
+while t < 10:
+    render( t, state )
     state = integrate( state, t, dt )
     t += dt
