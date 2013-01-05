@@ -1,5 +1,13 @@
 class Vector2d:
-    """ Class representing an 2d vector. """
+    """ Class representing an 2d vector. 
+    
+    Member:
+    x - The x component.
+    y - The y component.
+    """
+    
+    x = 0
+    y = 0
     
     def __init__( self, x, y ):
         """ Constructor with the x and y component as parameters. """
@@ -10,7 +18,7 @@ class Vector2d:
     def nullVector():
         """ Static method to construct an null vector. 
         
-        Tests:
+        Test:
         >>> v = Vector2d.nullVector()
         >>> v.x
         0
@@ -22,7 +30,7 @@ class Vector2d:
     def __add__( self, other ):
         """ Add two vectors using + operator. Returns the resulting vector. 
         
-        Tests:
+        Test:
         >>> v1 = Vector2d(1, 2)
         >>> v2 = Vector2d(3, 4)
         >>> v3 = v1 + v2
@@ -36,7 +44,7 @@ class Vector2d:
     def __mul__( self, scalar ):
         """ Scalar multiplication using the * operator. Returns the resulting vector. 
         
-        Tests:
+        Test:
         >>> v1 = Vector2d(1, 2)
         >>> v2 = v1 * 5
         >>> v2.x

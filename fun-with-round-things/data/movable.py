@@ -37,7 +37,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.addForce( Vector2d(1, 2) ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> m.forces[0].x == 1 and m.forces[0].y == 2
         True
         """
@@ -50,7 +50,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.addForce( Vector2d(1, 2) ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> len(m.clearForces().forces) == 0
         True
         """
@@ -63,7 +63,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.setMass( 1 ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> m.mass
         1
         """
@@ -76,7 +76,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.setPosition( Vector2d(2, 3) ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> m.position.x == 2 and m.position.y == 3
         True
         """
@@ -89,7 +89,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.setPositionX( 2 ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> m.position.x == 2 and m.position.y == 0
         True
         """
@@ -102,7 +102,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.setPositionY( 2 ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> m.position.x == 0 and m.position.y == 2
         True
         """
@@ -115,7 +115,7 @@ class Movable(metaclass = ABCMeta):
         Test:
         >>> m = Movable()
         >>> m.setVelocity( Vector2d(2, 3) ) # doctest: +ELLIPSIS
-        <__main__.Movable object at 0x...>
+        <...Movable object at 0x...>
         >>> m.velocity.x == 2 and m.velocity.y == 3
         True
         """
