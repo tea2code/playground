@@ -1,7 +1,7 @@
 import fps.fps
 import graphics.tkgraphics
 import physics.physics
-import timestepper
+from common.timestepper import *
 from common.vector2d import *
 from data import *
 
@@ -33,7 +33,7 @@ class Fun:
         self.fps = fps.fps.Fps( 60, 120 )
         
         # Initialize time stepper.
-        self.timestepper = timestepper.Timestepper( self.frameTime, self.calculateNextState )
+        self.timestepper = Timestepper( self.frameTime, self.calculateNextState )
         self.timestepper.time = self.frameTime
         
     def begin( self ):
