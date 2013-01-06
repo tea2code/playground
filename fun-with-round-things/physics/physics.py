@@ -1,6 +1,6 @@
 import random
 from .moveheun import *
-from .circlestate import *
+from .movestate import *
 from common import tickable
 
 class Physics( tickable.Tickable ):
@@ -15,15 +15,15 @@ class Physics( tickable.Tickable ):
 
         if data.time < data.timeLimit + 0.00001:
             for circle in data.circles:
-                state = CircleState()
+                state = MoveState()
                 state.x = circle.position.x
                 state.v = circle.velocity.x
                 
-                derivative = CircleState()
+                derivative = MoveState()
                 derivative.x = state.v # Derivative of position is velocity.
                 derivative.v = data.acceleration # Derivative of velocity is acceleration.
                 
-                newState, newDerivative = MoveHeun.integrate( state, derivative, data.deltaTime, CircleState )
+                newState, newDerivative = MoveHeun.integrate( state, derivative, data.deltaTime )
                 circle.position.x = newState.x
                 circle.velocity.x = newState.v
           
