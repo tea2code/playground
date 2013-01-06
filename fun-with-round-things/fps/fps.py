@@ -38,6 +38,14 @@ class Fps( tickable.Tickable ):
             data.fps = round( self.fpsCounter.fps() )
             self.tickCounter = 0
             
+    def __str__( self ):
+        """ Test:
+        >>> f = Fps( 20, 10 )
+        >>> print(f)
+        Fps(maxTickCounts 20, started False, tickCounter 0)
+        """
+        return 'Fps(maxTickCounts {0}, started {1}, tickCounter {2})'.format(self.maxTickCounts, self.started, self.tickCounter)
+            
 if __name__ == '__main__':
     print( 'Executing doctest.' )
     import doctest

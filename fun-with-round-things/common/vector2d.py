@@ -55,6 +55,11 @@ class Vector2d:
         return Vector2d( self.x * scalar, self.y * scalar )
         
     def __str__( self ):
+        """ Test:
+        >>> v = Vector2d(1, 2.01)
+        >>> print(v)
+        Vector2d(1.00, 2.01)
+        """
         return 'Vector2d({:.2f}, {:.2f})'.format(self.x, self.y)
         
 if __name__ == '__main__':

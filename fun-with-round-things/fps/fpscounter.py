@@ -12,7 +12,6 @@ class FpsCounter():
     
     maxNum = 0
     measurements = deque([])
-    
     _lastTime = 0
     
     def __init__( self, maxNum = 20 ):
@@ -77,6 +76,15 @@ class FpsCounter():
         
     def __time( self ):
         return time.perf_counter()
+        
+    def __str__( self ):
+        """ Test:
+        >>> f = FpsCounter()
+        >>> print(f)
+        FpsCounter(maxNum 20, measurements [], _lastTime 0.00)
+        """
+        measurements = ", ".join( [str(element) for element in self.measurements]  )
+        return 'FpsCounter(maxNum {0}, measurements [{1}], _lastTime {2:.2f})'.format(self.maxNum, measurements, self._lastTime)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

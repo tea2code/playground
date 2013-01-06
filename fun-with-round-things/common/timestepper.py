@@ -61,6 +61,14 @@ class Timestepper:
     def __hiresTime( self ):
         return time.perf_counter()
         
+    def __str__( self ):
+        """ Test:
+        >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
+        >>> print(t) # doctest: +ELLIPSIS
+        Timestepper(accumulator 0.00, deltaTime 0.10, func <function <lambda> at 0x...>, maxFrameTime 0.25, time 0.00, _currentTime 0.00)
+        """
+        return 'Timestepper(accumulator {0:.2f}, deltaTime {1:.2f}, func {2}, maxFrameTime {3:.2f}, time {4:.2f}, _currentTime {5:.2f})'.format(self.accumulator, self.deltaTime, self.func, self.maxFrameTime, self.time, self._currentTime)
+        
 if __name__ == '__main__':
     print( 'Executing doctest.' )
     import doctest

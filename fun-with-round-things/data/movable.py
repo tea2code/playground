@@ -123,6 +123,11 @@ class Movable(metaclass = ABCMeta):
         return self
         
     def __str__( self ):
+        """ Test:
+        >>> m = Movable()
+        >>> print(m)
+        Movable(forces [], mass 0.00, position Vector2d(0.00, 0.00), velocity Vector2d(0.00, 0.00))
+        """
         forces = ", ".join( [str(element) for element in self.forces]  )
         return 'Movable(forces [{0}], mass {1:.2f}, position {2}, velocity {3})'.format(forces, self.mass, self.position, self.velocity)
         
