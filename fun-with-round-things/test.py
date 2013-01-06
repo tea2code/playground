@@ -3,6 +3,7 @@ import data.circle
 import data.movable
 import fps.fps
 import fps.fpscounter
+import timestepper
 
 if __name__ == '__main__':
     import doctest
@@ -11,3 +12,4 @@ if __name__ == '__main__':
     doctest.testmod( data.movable )
     doctest.testmod( fps.fps )
     doctest.testmod( fps.fpscounter )
+    doctest.testmod( timestepper )

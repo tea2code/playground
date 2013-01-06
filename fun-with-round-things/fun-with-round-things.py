@@ -34,7 +34,7 @@ class Fun:
         
         # Initialize time stepper.
         self.timestepper = timestepper.Timestepper( self.frameTime, self.calculateNextState )
-        self.timestepper.t = self.frameTime
+        self.timestepper.time = self.frameTime
         
     def begin( self ):
         # Start.

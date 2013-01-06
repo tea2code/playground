@@ -7,38 +7,61 @@ class Timestepper:
     
     Member:
     accumulator -- Accumulates the frame times.
+    deltaTime -- The target difference between two frames.
+    func -- The function to execute. Must take time and deltaTime as parameter.
     maxFrameTime -- Maximum frame time to avoid spiral of death.
-    t -- The current time.
+    time -- The accumulated time.
+    _currentTime -- The current timestamp.
     """
 
-    accumulator = 0.0
+    accumulator = 0
+    deltaTime = 0
+    func = None
     maxFrameTime = 0.25
-    t = 0.0
+    time = 0
+    _currentTime = 0
     
-    def __init__( self, dt, func ):
-        """ Parameter:
-        dt -- The target difference between two frames.
-        func -- The function to execute. It must take two parameters: t, dt
+    def __init__( self, deltaTime, func ):
+        """ Test:
+        >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
+        >>> t.deltaTime
+        0.1
+        >>> t.func # doctest: +ELLIPSIS
+        <function <lambda> at 0x...>
         """
-        self.dt = dt
+        self.deltaTime = deltaTime
         self.func = func
         
     def start( self ):
-        """ Start the stepper. """
-        self.currentTime = self.__hiresTime()
+        """ Start the stepper. 
+        
+        Test:
+        >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
+        >>> t._currentTime > 0
+        False
+        >>> t.start()
+        >>> t._currentTime > 0
+        True
+        """
+        self._currentTime = self.__hiresTime()
         
     def tick( self ):
         """ Calls function based on elapsed time. """
         newTime = self.__hiresTime()
-        frameTime = min( newTime - self.currentTime, self.maxFrameTime )
-        self.currentTime = newTime
+        frameTime = min( newTime - self._currentTime, self.maxFrameTime )
+        self._currentTime = newTime
         
         self.accumulator += frameTime
         
-        while self.accumulator >= self.dt:
-            self.func( self.t, self.dt )
-            self.t += self.dt
-            self.accumulator -= self.dt
+        while self.accumulator >= self.deltaTime:
+            self.func( self.time, self.deltaTime )
+            self.time += self.deltaTime
+            self.accumulator -= self.deltaTime
     
     def __hiresTime( self ):
         return time.perf_counter()
+        
+if __name__ == '__main__':
+    print( 'Executing doctest.' )
+    import doctest
+    doctest.testmod()

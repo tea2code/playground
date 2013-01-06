@@ -9,6 +9,9 @@ class TkGraphics( tickable.Tickable ):
     window -- The window object.
     """
     
+    window = None
+    canvas = None
+    
     def __init__( self, data ):
         """ The parameter data which contains the window settings. """
         self.window = Tk()
