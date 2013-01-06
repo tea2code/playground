@@ -17,11 +17,11 @@ class MoveHeun:
     
         bad = state + derivative * h
         badDerivative = MoveState()
-        badDerivative.x = bad.v # Derivative of position is velocity.
-        badDerivative.v = derivative.v
+        badDerivative.position = bad.velocity # Derivative of position is velocity.
+        badDerivative.velocity = derivative.velocity
         
         new = state + (derivative + badDerivative) * (h / 2)
         newDerivative = MoveState()
-        newDerivative.x = new.v # Derivative of position is velocity.
-        newDerivative.v = derivative.v
+        newDerivative.position = new.velocity # Derivative of position is velocity.
+        newDerivative.velocity = derivative.velocity
         return new, newDerivative

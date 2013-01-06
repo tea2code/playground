@@ -14,13 +14,13 @@ class Physics( tickable.Tickable ):
         if data.time < data.timeLimit + 0.00001:
             for circle in data.circles:
                 state = MoveState()
-                state.x = circle.position.x
-                state.v = circle.velocity.x
+                state.position = circle.position.x
+                state.velocity = circle.velocity.x
                 
                 derivative = MoveState()
-                derivative.x = state.v # Derivative of position is velocity.
-                derivative.v = data.acceleration # Derivative of velocity is acceleration.
+                derivative.position = state.velocity # Derivative of position is velocity.
+                derivative.velocity = data.acceleration # Derivative of velocity is acceleration.
                 
                 newState, newDerivative = MoveHeun.integrate( state, derivative, data.deltaTime )
-                circle.position.x = newState.x
-                circle.velocity.x = newState.v
+                circle.position.x = newState.position
+                circle.velocity.x = newState.velocity
