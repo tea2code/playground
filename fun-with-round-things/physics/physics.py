@@ -6,8 +6,6 @@ from common import tickable
 class Physics( tickable.Tickable ):
     """ This class calculates the physical reactions of all objects. """
 
-    counter = 0
-    
     def tick( self, data ):
         """ Implementation of Tickable.tick().
 
@@ -26,5 +24,3 @@ class Physics( tickable.Tickable ):
                 newState, newDerivative = MoveHeun.integrate( state, derivative, data.deltaTime )
                 circle.position.x = newState.x
                 circle.velocity.x = newState.v
-          
-        self.counter += 1
