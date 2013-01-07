@@ -16,7 +16,7 @@ class Fun:
         # Initialize game data.
         self.data = data.Data()
         self.data.acceleration = 14 # Pixel per second^2
-        self.data.circles.append( circle.Circle().setPositionX(20).setPositionY(100).setRadius(10).setColor('Green') )
+        self.data.circles.append( circle.Circle().setPositionX(20).setPositionY(100).setRadius(10).setColor('Green').setMass(1).addForce(Vector2d(14, 0)) )
         self.data.target = Vector2d( 720, 100 )
         self.data.timeLimit = 10
         self.data.windowHeight = 200

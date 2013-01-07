@@ -7,14 +7,14 @@ class Movable(metaclass = ABCMeta):
     Members:
     forces -- List of force vectors (Vector2d).
     mass -- The mass of the object (float).
+    momentum -- The momentum of the object (Vector2d).
     position -- The position of the object (Vector2d).
-    velocity -- The velocity of the object (Vector2d).
     """
     
     forces = []
     mass = 0
+    momentum = None
     position = None
-    velocity = None
     
     def __init__( self ):
         """ Test:
@@ -25,11 +25,11 @@ class Movable(metaclass = ABCMeta):
         0
         >>> m.position.x == 0 and m.position.y == 0
         True
-        >>> m.velocity.x == 0 and m.velocity.y == 0
+        >>> m.momentum.x == 0 and m.momentum.y == 0
         True
         """
+        self.momentum = Vector2d.nullVector()
         self.position = Vector2d.nullVector()
-        self.velocity = Vector2d.nullVector()
     
     def addForce( self, force ):
         """ Adds force to object (Vector2d). Returns this.
@@ -68,6 +68,19 @@ class Movable(metaclass = ABCMeta):
         1
         """
         self.mass = mass
+        return self
+        
+    def setMomentum( self, momentum ):
+        """ Sets the momentum (Vector2d). Returns this. 
+        
+        Test:
+        >>> m = Movable()
+        >>> m.setMomentum( Vector2d(2, 3) ) # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
+        >>> m.momentum.x == 2 and m.momentum.y == 3
+        True
+        """
+        self.momentum = momentum
         return self
         
     def setPosition( self, position ):
@@ -109,27 +122,14 @@ class Movable(metaclass = ABCMeta):
         self.position.y = y
         return self
         
-    def setVelocity( self, velocity ):
-        """ Sets the velocity (Vector2d). Returns this. 
-        
-        Test:
-        >>> m = Movable()
-        >>> m.setVelocity( Vector2d(2, 3) ) # doctest: +ELLIPSIS
-        <...Movable object at 0x...>
-        >>> m.velocity.x == 2 and m.velocity.y == 3
-        True
-        """
-        self.velocity = velocity
-        return self
-        
     def __str__( self ):
         """ Test:
         >>> m = Movable()
         >>> print(m)
-        Movable(forces [], mass 0.00, position Vector2d(0.00, 0.00), velocity Vector2d(0.00, 0.00))
+        Movable(forces [], mass 0.00, momentum Vector2d(0.00, 0.00), position Vector2d(0.00, 0.00))
         """
         forces = ", ".join( [str(element) for element in self.forces]  )
-        return 'Movable(forces [{0}], mass {1:.2f}, position {2}, velocity {3})'.format(forces, self.mass, self.position, self.velocity)
+        return 'Movable(forces [{0}], mass {1:.2f}, momentum {2}, position {3})'.format(forces, self.mass, self.momentum, self.position)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

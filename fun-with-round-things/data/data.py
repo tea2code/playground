@@ -7,13 +7,14 @@ class Data:
     Member:
     circles -- A list of circle objects.
     deltaTime -- The time difference since the last step.
+    fps -- The current frame rate.
+    target -- The target to hit.
     time -- The accumulated time of all steps.
     windowHeight -- Height of the window.
     windowTitle -- Title of the window.
     windowWidth -- Width of the window.
     """
 
-    acceleration = 0
     circles = []
     deltaTime = 0
     fps = 0

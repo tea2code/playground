@@ -42,7 +42,7 @@ class Circle( movable.Movable ):
         """ Test:
         >>> c = Circle()
         >>> print(c)
-        Circle(color black, radius 1.00, Movable(forces [], mass 0.00, position Vector2d(0.00, 0.00), velocity Vector2d(0.00, 0.00)))
+        Circle(color black, radius 1.00, Movable(forces [], mass 0.00, momentum Vector2d(0.00, 0.00), position Vector2d(0.00, 0.00)))
         """
         return 'Circle(color {0}, radius {1:.2f}, {2})'.format(self.color, self.radius, super().__str__())
         

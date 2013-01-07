@@ -1,54 +1,53 @@
+from common.vector2d import *
+
 class MoveState:
     """ State class for integration of movable objects. 
     
     Member:
-    position -- The position.
-    velocity -- The velocity.
+    mass -- The mass (float).
+    momentum -- The momentum (Vector2d).
+    position -- The position (Vector2d).
     """
     
-    position = 0
-    velocity = 0
-
-    def __add__( self, other ):
-        """ Sum up two move states using +. Corresponds to addition of vectors.
-        
-        Test:
-        >>> m1 = MoveState()
-        >>> m1.position = 1
-        >>> m1.velocity = 2
-        >>> m2 = MoveState()
-        >>> m2.position = 3
-        >>> m2.velocity = 4
-        >>> print(m1 + m2)
-        MoveState(position 4.00, velocity 6.00)
-        """
-        new = MoveState()
-        new.position = self.position + other.position
-        new.velocity = self.velocity + other.velocity
-        return new
+    mass = 0
+    momentum = None
+    position = None
     
-    def __mul__( self, scalar ):
-        """ Multiplicate object with scalar using *. Corresponds to scalar multiplication of vectors.
-        
+    def __init__( self ):
+        """ Test:
+        >>> m = MoveState()
+        >>> m.mass
+        0
+        >>> m.position.x == 0 and m.position.y == 0
+        True
+        >>> m.momentum.x == 0 and m.momentum.y == 0
+        True
+        """
+        self.momentum = Vector2d.nullVector()
+        self.position = Vector2d.nullVector()
+
+    def velocity( self ):
+        """ Calculates the current velocity and returns it (Vector2d).
+            
         Test:
         >>> m = MoveState()
-        >>> m.position = 1
-        >>> m.velocity = 2
-        >>> print(m * 5)
-        MoveState(position 5.00, velocity 10.00)
+        >>> m.mass = 2
+        >>> m.momentum = Vector2d(10, 6)
+        >>> v = m.velocity()
+        >>> round(v.x)
+        5
+        >>> round(v.y)
+        3
         """
-        new = MoveState()
-        new.position = self.position * scalar
-        new.velocity = self.velocity * scalar
-        return new
+        return self.momentum * (1/self.mass)
         
     def __str__( self ):
         """ Test:
         >>> m = MoveState()
         >>> print(m)
-        MoveState(position 0.00, velocity 0.00)
+        MoveState(mass 0.00, momentum Vector2d(0.00, 0.00), position Vector2d(0.00, 0.00))
         """
-        return 'MoveState(position {:.2f}, velocity {:.2f})'.format(self.position, self.velocity)
+        return 'MoveState(mass {0:.2f}, momentum {1}, position {2})'.format(self.mass, self.momentum, self.position)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

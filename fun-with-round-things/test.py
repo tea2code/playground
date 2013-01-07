@@ -4,6 +4,7 @@ import data.circle
 import data.movable
 import fps.fps
 import fps.fpscounter
+import physics.movederivative
 import physics.movestate
 
 if __name__ == '__main__':
@@ -14,4 +15,5 @@ if __name__ == '__main__':
     doctest.testmod( data.movable )
     doctest.testmod( fps.fps )
     doctest.testmod( fps.fpscounter )
+    doctest.testmod( physics.movederivative )
     doctest.testmod( physics.movestate )
