@@ -4,24 +4,23 @@ class MoveHeun:
     """ Integration for moveable objects with position x and velocity v. """
     
     @staticmethod
-    def integrate( state, derivative, h ):
+    def integrate( state, h ):
         """ Integrate using the heun method.
 
         Arguments:
         state -- The current state (MoveState).
-        derivative -- The current derivative (MoveState).
         h -- The change in step number (float).
         
-        Returns the new state and the new derivative.
+        Returns the new state.
         """
     
-        bad = state + derivative * h
-        badDerivative = MoveState()
-        badDerivative.position = bad.velocity # Derivative of position is velocity.
-        badDerivative.velocity = derivative.velocity
+        # yy_i+1 = y_i + h * f(t_i, y_i)
+        eulerState = MoveState()
+        eulerState.mass = state.mass
+        eulerState.momentum = state.momentum + state.force * h
         
-        new = state + (derivative + badDerivative) * (h / 2)
-        newDerivative = MoveState()
-        newDerivative.position = new.velocity # Derivative of position is velocity.
-        newDerivative.velocity = derivative.velocity
-        return new, newDerivative
+        # y_i+1 = y_i + (h/2) * (f(t_i, y_i) + f(t_i+1, yy_i+1))
+        newState = MoveState()
+        newState.momentum = eulerState.momentum
+        newState.position = state.position + (state.velocity() + eulerState.velocity()) * (h / 2)
+        return newState

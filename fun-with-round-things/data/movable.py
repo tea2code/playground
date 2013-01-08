@@ -57,6 +57,26 @@ class Movable(metaclass = ABCMeta):
         del self.forces[:]
         return self
         
+    def sumForces( self ):
+        """ Calculates the sum of all forces and returns it. 
+        
+        Test:
+        >>> m = Movable()
+        >>> m.addForce( Vector2d(1, 0) ) # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
+        >>> m.addForce( Vector2d(0, 2) ) # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
+        >>> m.addForce( Vector2d(3, 3) ) # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
+        >>> v = m.sumForces()
+        >>> v.x == 4 and v.y == 5
+        True
+        """
+        sum = Vector2d.nullVector()
+        for force in self.forces:
+            sum += force
+        return sum
+        
     def setMass( self, mass ):
         """ Sets mass (float). Returns this. 
         
