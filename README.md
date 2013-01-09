@@ -7,6 +7,20 @@ Little playground for tests with Qt, SFML, Python and physics.
 - Python 3
 - PyTMX
 
+## Resources
+
+### Sprites/Tiles
+
+Search terms: "free tiles", "free tilesets", "free sprites"...
+
+- http://teh_pro.webs.com/sprites.htm
+- http://www.spriters-resource.com/
+- http://lunar.lostgarden.com/labels/free%20game%20graphics.html
+- http://hasgraphics.com/
+- http://blogoscoped.com/archive/2006-08-08-n51.html
+- http://www.reinerstilesets.de/
+- http://www.widgetworx.com/widgetworx/portfolio/spritelib.html
+
 ## References
 
 - http://gafferongames.com/game-physics/
