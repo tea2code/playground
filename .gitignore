@@ -23,6 +23,3 @@ Makefile
 *.tmp
 __pycache__/
 *.py[cod]
-
-# Application specific
-PyTMX/
