@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<game>
+    <!-- Meta of this file. -->
+    <map-engine>1</map-engine>
+
+    <!-- Information of this game. -->
+    <name>First Example</name>
+    <author>tea2code</author>
+    <date>2013-01-14</date>
+    <version>1</version>
+    <description>First example of a game map aka level.</description>
+    
+    <!-- The map. -->
+    <world>
+        <height>650</height>
+        <width>650</width>
+        <start>
+            <x>50</x>
+            <y>50</y>
+        </start>
+        <target>
+            <x>600</x>
+            <y>600</y>
+        </target>
+        <timelimit>300</timelimit>
+        <map>
+            <border>10</border>
+            <rect>
+                <angle>-45</angle>
+                <height>100</height>
+                <width>100</width>
+                <x>310</x>
+                <y>310</y>
+            </rect>
+        </map>
+    </world>
+</game>
