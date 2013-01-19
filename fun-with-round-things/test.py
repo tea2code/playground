@@ -1,9 +1,14 @@
 import common.timestepper
 import common.vector2d
 import data.circle
+import data.game
+import data.map
 import data.movable
+import data.rect
+import data.world
 import fps.fps
 import fps.fpscounter
+import map.mapparser
 import physics.movestate
 
 if __name__ == '__main__':
@@ -11,7 +16,12 @@ if __name__ == '__main__':
     doctest.testmod( common.timestepper )
     doctest.testmod( common.vector2d )
     doctest.testmod( data.circle )
+    doctest.testmod( data.game )
+    doctest.testmod( data.map )
     doctest.testmod( data.movable )
+    doctest.testmod( data.rect )
+    doctest.testmod( data.world )
     doctest.testmod( fps.fps )
     doctest.testmod( fps.fpscounter )
     doctest.testmod( physics.movestate )
+    doctest.testmod( map.mapparser )

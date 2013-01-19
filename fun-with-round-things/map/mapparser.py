@@ -67,7 +67,19 @@ class MapParser( sax.handler.ContentHandler ):
     _errorVersion = 'Not parsable version "{0}"'
     _vectorContent = None
     
+    def __init__( self ):
+        ''' Test:
+        >>> m = MapParser()
+        >>> m.game
+        >>> m._content
+        ''
+        >>> len(m._elementStack)
+        0
+        >>> m._vectorContent
+        '''
+    
     def startElement( self, name, attrs ): 
+        self._content = ''
         if len(self._elementStack) == 0 or self._elementStack[-1] == self.TAG_GAME:
             self.__gameStart( name, attrs )
         elif self._elementStack[-1] == self.TAG_WORLD: 
@@ -90,7 +102,6 @@ class MapParser( sax.handler.ContentHandler ):
             self.__rectEnd( name )    
         else:
             raise sax.SAXParseException( self._errorUnknown % (name) )
-        self._content = ''
 
     def characters( self, content ): 
         self._content += content
@@ -128,7 +139,7 @@ class MapParser( sax.handler.ContentHandler ):
         
     def __mapEnd( self, name ):
         if name == self.TAG_BORDER:
-            self.game.world.map.border = self._content
+            self.game.world.map.border = float(self._content)
         else:
             if name == self.TAG_MAP:
                 self._elementStack.pop()
@@ -145,11 +156,11 @@ class MapParser( sax.handler.ContentHandler ):
     
     def __rectEnd( self, name ):
         if name == self.TAG_ANGLE:
-            self.game.world.map.objects[-1].angle = self._content
+            self.game.world.map.objects[-1].angle = float(self._content)
         elif name == self.TAG_HEIGHT:
-            self.game.world.map.objects[-1].height = self._content
+            self.game.world.map.objects[-1].height = float(self._content)
         elif name == self.TAG_WIDTH:
-            self.game.world.map.objects[-1].width = self._content
+            self.game.world.map.objects[-1].width = float(self._content)
         elif name == self.TAG_X:
             self.__vectorX( self._content )
         elif name == self.TAG_Y:
@@ -168,16 +179,16 @@ class MapParser( sax.handler.ContentHandler ):
     def __vectorX( self, x ):
         if self._vectorContent is None:
             self._vectorContent = Vector2d.nullVector()
-        self._vectorContent.x = x
+        self._vectorContent.x = float(x)
     
     def __vectorY( self, y ):
         if self._vectorContent is None:
             self._vectorContent = Vector2d.nullVector()
-        self._vectorContent.y = y
+        self._vectorContent.y = float(y)
     
     def __worldEnd( self, name ):
         if name == self.TAG_HEIGHT:
-            self.game.world.height = self._content
+            self.game.world.height = float(self._content)
         elif name == self.TAG_START:
             self.game.world.start = self._vectorContent
             self._vectorContent = None
@@ -185,9 +196,9 @@ class MapParser( sax.handler.ContentHandler ):
             self.game.world.target = self._vectorContent
             self._vectorContent = None
         elif name == self.TAG_TIMELIMIT:
-            self.game.world.timelimit = self._content
+            self.game.world.timelimit = float(self._content)
         elif name == self.TAG_WIDTH:
-            self.game.world.width = self._content
+            self.game.world.width = float(self._content)
         elif name == self.TAG_X:
             self.__vectorX( self._content )
         elif name == self.TAG_Y:
@@ -207,9 +218,6 @@ class MapParser( sax.handler.ContentHandler ):
                 raise sax.SAXParseException( self._errorUnknown % (name) )
                 
 if __name__ == '__main__':
-    print( 'TODO: Remove this test.' )
-    handler = MapParser() 
-    parser = sax.make_parser() 
-    parser.setContentHandler( handler ) 
-    parser.parse( 'maps/01 - First Example.xml' ) 
-    
+    print( 'Executing doctest.' )
+    import doctest
+    doctest.testmod()
