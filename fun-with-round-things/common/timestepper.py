@@ -1,7 +1,7 @@
 import time
 
 class Timestepper:
-    """ Calls a function based on predefined time steps. This function does not contain a automatic timer.
+    ''' Calls a function based on predefined time steps. This function does not contain a automatic timer.
     Instead it checks the elapsed time and executes the function only if enough time was elapsed. The function
     will be executed as long time is left in this frame.
     
@@ -12,7 +12,7 @@ class Timestepper:
     maxFrameTime -- Maximum frame time to avoid spiral of death.
     time -- The accumulated time.
     _currentTime -- The current timestamp.
-    """
+    '''
 
     accumulator = 0
     deltaTime = 0
@@ -22,18 +22,18 @@ class Timestepper:
     _currentTime = 0
     
     def __init__( self, deltaTime, func ):
-        """ Test:
+        ''' Test:
         >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
         >>> t.deltaTime
         0.1
         >>> t.func # doctest: +ELLIPSIS
         <function <lambda> at 0x...>
-        """
+        '''
         self.deltaTime = deltaTime
         self.func = func
         
     def start( self ):
-        """ Start the stepper. 
+        ''' Start the stepper. 
         
         Test:
         >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
@@ -42,11 +42,11 @@ class Timestepper:
         >>> t.start()
         >>> t._currentTime > 0
         True
-        """
+        '''
         self._currentTime = self.__hiresTime()
         
     def tick( self ):
-        """ Calls function based on elapsed time. """
+        ''' Calls function based on elapsed time. '''
         newTime = self.__hiresTime()
         frameTime = min( newTime - self._currentTime, self.maxFrameTime )
         self._currentTime = newTime
@@ -62,11 +62,11 @@ class Timestepper:
         return time.perf_counter()
         
     def __str__( self ):
-        """ Test:
+        ''' Test:
         >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
         >>> print(t) # doctest: +ELLIPSIS
         Timestepper(accumulator 0.00, deltaTime 0.10, func <function <lambda> at 0x...>, maxFrameTime 0.25, time 0.00, _currentTime 0.00)
-        """
+        '''
         return 'Timestepper(accumulator {0:.2f}, deltaTime {1:.2f}, func {2}, maxFrameTime {3:.2f}, time {4:.2f}, _currentTime {5:.2f})'.format(self.accumulator, self.deltaTime, self.func, self.maxFrameTime, self.time, self._currentTime)
         
 if __name__ == '__main__':

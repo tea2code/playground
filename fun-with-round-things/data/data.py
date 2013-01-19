@@ -1,7 +1,7 @@
 from common.vector2d import *
 
 class Data:
-    """ This class represents all the data available in the current game which is equivalent to 
+    ''' This class represents all the data available in the current game which is equivalent to 
     the current state. 
     
     Member:
@@ -13,7 +13,7 @@ class Data:
     windowHeight -- Height of the window.
     windowTitle -- Title of the window.
     windowWidth -- Width of the window.
-    """
+    '''
 
     circles = []
     deltaTime = 0

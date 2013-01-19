@@ -2,7 +2,7 @@ class Rk4:
 
     @staticmethod
     def integrate( x, h, state, func ):
-        """ Integrates the next step of a function using the common fourth-order Runge–Kutta method.
+        ''' Integrates the next step of a function using the common fourth-order Runge–Kutta method.
 
         Arguments:
         x -- The current step number.
@@ -11,7 +11,7 @@ class Rk4:
         func -- The function to integrate. This function must take x, h, state and (optional) derivate as parameters. Must return the derivate.
         
         Returns the new state.
-        """
+        '''
         k1 = func( x, 0, state )
         k2 = func( x, 0.5 * h, state, k1 )
         k3 = func( x, 0.5 * h, state, k2 )

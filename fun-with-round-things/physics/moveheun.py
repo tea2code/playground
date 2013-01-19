@@ -1,18 +1,18 @@
 from .movestate import *
 
 class MoveHeun:
-    """ Integration for moveable objects with position x and velocity v. """
+    ''' Integration for moveable objects with position x and velocity v. '''
     
     @staticmethod
     def integrate( state, h ):
-        """ Integrate using the heun method.
+        ''' Integrate using the heun method.
 
         Arguments:
         state -- The current state (MoveState).
         h -- The change in step number (float).
         
         Returns the new state.
-        """
+        '''
     
         # yy_i+1 = y_i + h * f(t_i, y_i)
         eulerState = MoveState()

@@ -4,12 +4,12 @@ from .movestate import *
 from common import tickable
 
 class Physics( tickable.Tickable ):
-    """ This class calculates the physical reactions of all objects. """
+    ''' This class calculates the physical reactions of all objects. '''
 
     def tick( self, data ):
-        """ Implementation of Tickable.tick().
+        ''' Implementation of Tickable.tick().
 
-        Calculates the physic on all objects. """
+        Calculates the physic on all objects. '''
 
         if data.time < data.timeLimit + 0.00001:
             for circle in data.circles:

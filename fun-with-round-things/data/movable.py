@@ -2,14 +2,14 @@ from abc import ABCMeta
 from common.vector2d import *
 
 class Movable(metaclass = ABCMeta):
-    """ This abstract class represents a movable object. 
+    ''' This abstract class represents a movable object. 
     
     Members:
     forces -- List of force vectors (Vector2d).
     mass -- The mass of the object (float).
     momentum -- The momentum of the object (Vector2d).
     position -- The position of the object (Vector2d).
-    """
+    '''
     
     forces = []
     mass = 0
@@ -17,7 +17,7 @@ class Movable(metaclass = ABCMeta):
     position = None
     
     def __init__( self ):
-        """ Test:
+        ''' Test:
         >>> m = Movable()
         >>> m.forces
         []
@@ -27,12 +27,12 @@ class Movable(metaclass = ABCMeta):
         True
         >>> m.momentum.x == 0 and m.momentum.y == 0
         True
-        """
+        '''
         self.momentum = Vector2d.nullVector()
         self.position = Vector2d.nullVector()
     
     def addForce( self, force ):
-        """ Adds force to object (Vector2d). Returns this.
+        ''' Adds force to object (Vector2d). Returns this.
 
         Test:
         >>> m = Movable()
@@ -40,12 +40,12 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> m.forces[0].x == 1 and m.forces[0].y == 2
         True
-        """
+        '''
         self.forces.append( force )
         return self
         
     def clearForces( self ):
-        """ Removes all forces. Returns this. 
+        ''' Removes all forces. Returns this. 
 
         Test:
         >>> m = Movable()
@@ -53,12 +53,12 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> len(m.clearForces().forces) == 0
         True
-        """
+        '''
         del self.forces[:]
         return self
         
     def sumForces( self ):
-        """ Calculates the sum of all forces and returns it. 
+        ''' Calculates the sum of all forces and returns it. 
         
         Test:
         >>> m = Movable()
@@ -71,14 +71,14 @@ class Movable(metaclass = ABCMeta):
         >>> v = m.sumForces()
         >>> v.x == 4 and v.y == 5
         True
-        """
+        '''
         sum = Vector2d.nullVector()
         for force in self.forces:
             sum += force
         return sum
         
     def setMass( self, mass ):
-        """ Sets mass (float). Returns this. 
+        ''' Sets mass (float). Returns this. 
         
         Test:
         >>> m = Movable()
@@ -86,12 +86,12 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> m.mass
         1
-        """
+        '''
         self.mass = mass
         return self
         
     def setMomentum( self, momentum ):
-        """ Sets the momentum (Vector2d). Returns this. 
+        ''' Sets the momentum (Vector2d). Returns this. 
         
         Test:
         >>> m = Movable()
@@ -99,12 +99,12 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> m.momentum.x == 2 and m.momentum.y == 3
         True
-        """
+        '''
         self.momentum = momentum
         return self
         
     def setPosition( self, position ):
-        """ Sets the position (Vector2d). Returns this. 
+        ''' Sets the position (Vector2d). Returns this. 
         
         Test:
         >>> m = Movable()
@@ -112,12 +112,12 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> m.position.x == 2 and m.position.y == 3
         True
-        """
+        '''
         self.position = position
         return self
         
     def setPositionX( self, x ):
-        """ Sets the x component of the position. Returns this. 
+        ''' Sets the x component of the position. Returns this. 
         
         Test:
         >>> m = Movable()
@@ -125,12 +125,12 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> m.position.x == 2 and m.position.y == 0
         True
-        """
+        '''
         self.position.x = x
         return self
     
     def setPositionY( self, y ):
-        """ Sets the y component of the position. Returns this. 
+        ''' Sets the y component of the position. Returns this. 
         
         Test:
         >>> m = Movable()
@@ -138,16 +138,16 @@ class Movable(metaclass = ABCMeta):
         <...Movable object at 0x...>
         >>> m.position.x == 0 and m.position.y == 2
         True
-        """
+        '''
         self.position.y = y
         return self
         
     def __str__( self ):
-        """ Test:
+        ''' Test:
         >>> m = Movable()
         >>> print(m)
         Movable(forces [], mass 0.00, momentum Vector2d(0.00, 0.00), position Vector2d(0.00, 0.00))
-        """
+        '''
         forces = ", ".join( [str(element) for element in self.forces]  )
         return 'Movable(forces [{0}], mass {1:.2f}, momentum {2}, position {3})'.format(forces, self.mass, self.momentum, self.position)
         

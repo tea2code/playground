@@ -2,18 +2,18 @@ from common import tickable
 from tkinter import *
 
 class TkGraphics( tickable.Tickable ):
-    """ This class handles the visualisation of the current state. 
+    ''' This class handles the visualisation of the current state. 
     
     Member:
     canvas -- The canvas object.
     window -- The window object.
-    """
+    '''
     
     window = None
     canvas = None
     
     def __init__( self, data ):
-        """ The parameter data which contains the window settings. """
+        ''' The parameter data which contains the window settings. '''
         self.window = Tk()
         self.window.title( data.windowTitle )
         self.canvas = Canvas( self.window, width = data.windowWidth, height = data.windowHeight )
@@ -21,9 +21,9 @@ class TkGraphics( tickable.Tickable ):
         self.canvas.configure( background = 'white' )
     
     def tick( self, data ):
-        """ Implementation of Tickable.tick().
+        ''' Implementation of Tickable.tick().
 
-        Draws the current state (data) on the canvas. """
+        Draws the current state (data) on the canvas. '''
         self.canvas.delete( ALL )
         
         for circle in data.circles:

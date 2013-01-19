@@ -2,14 +2,14 @@ from common import tickable
 from . import fpscounter
 
 class Fps( tickable.Tickable ):
-    """ This class calculates the frame rate. 
+    ''' This class calculates the frame rate. 
     
     Member:
     fpsCounter -- The fps counter which does all the hard work (This class is just lazy).
     maxTickCounts -- Number of ticks before updating the data object.
     started -- Has the fps counter already started.
     tickCounter -- Number of ticks since the last update of the data object.
-    """
+    '''
 
     fpsCounter = None
     maxTickCounts = 0
@@ -17,16 +17,16 @@ class Fps( tickable.Tickable ):
     tickCounter = 0
     
     def __init__( self, maxTickCounts, measurementPoints ):
-        """ Test:
+        ''' Test:
         >>> f = Fps( 10, 20 )
         >>> f.maxTickCounts
         10
-        """
+        '''
         self.maxTickCounts = maxTickCounts
         self.fpsCounter = fpscounter.FpsCounter( measurementPoints )
     
     def tick( self, data ):
-        """ Implementation of Tickable.tick(). """
+        ''' Implementation of Tickable.tick(). '''
         
         if self.started == False:
             self.fpsCounter.start()
@@ -39,11 +39,11 @@ class Fps( tickable.Tickable ):
             self.tickCounter = 0
             
     def __str__( self ):
-        """ Test:
+        ''' Test:
         >>> f = Fps( 20, 10 )
         >>> print(f)
         Fps(maxTickCounts 20, started False, tickCounter 0)
-        """
+        '''
         return 'Fps(maxTickCounts {0}, started {1}, tickCounter {2})'.format(self.maxTickCounts, self.started, self.tickCounter)
             
 if __name__ == '__main__':
