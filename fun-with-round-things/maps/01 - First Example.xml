@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<game>
-    <!-- Meta of this file. -->
-    <map-engine>1</map-engine>
-
+<game parser="1">
     <!-- Information of this game. -->
-    <name>First Example</name>
     <author>tea2code</author>
     <date>2013-01-14</date>
-    <version>1</version>
     <description>First example of a game map aka level.</description>
-    
+    <name>First Example</name>
+    <version>1</version>
+
     <!-- The map. -->
     <world>
         <height>650</height>
