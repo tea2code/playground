@@ -1,6 +1,8 @@
 import fps.fps
+import gamerules.gamerules
 import graphics.tkgraphics
 import physics.physics
+
 from common.timestepper import *
 from common.vector2d import *
 from data import *
@@ -25,6 +27,9 @@ class Fun:
 
         # Initialize physics.
         self.physics = physics.physics.Physics()
+        
+        # Initialize game rules.
+        self.gameRules = gamerules.GameRules()
 
         # Initialize graphics.
         self.graphics = graphics.tkgraphics.TkGraphics( self.data )
@@ -46,6 +51,7 @@ class Fun:
         self.data.deltaTime = dt
         self.data.time = t
         self.physics.tick( self.data )
+        self.gameRules.tick( self.data )
         self.graphics.tick( self.data )
         self.fps.tick( self.data ) 
     
