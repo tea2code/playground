@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<game parser="1">
+    <!-- Information of this game. -->
+    <author>tea2code</author>
+    <date>2013-01-20</date>
+    <description>Simple movement to test integration.</description>
+    <name>Integration Test</name>
+    <version>1</version>
+
+    <!-- The map. -->
+    <world>
+        <height>200</height>
+        <width>800</width>
+        <start>
+            <x>20</x>
+            <y>100</y>
+        </start>
+        <target>
+            <x>720</x>
+            <y>100</y>
+        </target>
+        <timelimit>0</timelimit>
+        <map>
+            <border>0</border>
+        </map>
+    </world>
+</game>
