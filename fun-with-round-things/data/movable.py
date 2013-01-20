@@ -149,7 +149,8 @@ class Movable(metaclass = ABCMeta):
         Movable(forces [], mass 0.00, momentum Vector2d(0.00, 0.00), position Vector2d(0.00, 0.00))
         '''
         forces = ", ".join( [str(element) for element in self.forces]  )
-        return 'Movable(forces [{0}], mass {1:.2f}, momentum {2}, position {3})'.format(forces, self.mass, self.momentum, self.position)
+        template = 'Movable(forces [{0}], mass {1:.2f}, momentum {2}, position {3})'
+        return template.format(forces, self.mass, self.momentum, self.position)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

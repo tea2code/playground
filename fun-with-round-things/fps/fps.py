@@ -50,7 +50,9 @@ class Fps( tickable.Tickable ):
         >>> print(f)
         Fps(maxTickCounts 20, started False, tickCounter 0)
         '''
-        return 'Fps(maxTickCounts {0}, started {1}, tickCounter {2})'.format(self.maxTickCounts, self.started, self.tickCounter)
+        return 'Fps(maxTickCounts {0}, started {1}, tickCounter {2})'.format(self.maxTickCounts, 
+                                                                             self.started, 
+                                                                             self.tickCounter)
             
 if __name__ == '__main__':
     print( 'Executing doctest.' )

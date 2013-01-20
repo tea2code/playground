@@ -1,9 +1,9 @@
 import time
 
 class Timestepper:
-    ''' Calls a function based on predefined time steps. This function does not contain a automatic timer.
-    Instead it checks the elapsed time and executes the function only if enough time was elapsed. The function
-    will be executed as long time is left in this frame.
+    ''' Calls a function based on predefined time steps. This function does not contain a automatic 
+    timer. Instead it checks the elapsed time and executes the function only if enough time was 
+    elapsed. The function will be executed as long time is left in this frame.
     
     Member:
     accumulator -- Accumulates the frame times.
@@ -75,7 +75,10 @@ class Timestepper:
         >>> print(t) # doctest: +ELLIPSIS
         Timestepper(accumulator 0.00, deltaTime 0.10, func <function <lambda> at 0x...>, maxFrameTime 0.25, time 0.00, _currentTime 0.00)
         '''
-        return 'Timestepper(accumulator {0:.2f}, deltaTime {1:.2f}, func {2}, maxFrameTime {3:.2f}, time {4:.2f}, _currentTime {5:.2f})'.format(self.accumulator, self.deltaTime, self.func, self.maxFrameTime, self.time, self._currentTime)
+        template = ('Timestepper(accumulator {0:.2f}, deltaTime {1:.2f}, func {2}, '
+                    'maxFrameTime {3:.2f}, time {4:.2f}, _currentTime {5:.2f})')
+        return template.format(self.accumulator, self.deltaTime, self.func, self.maxFrameTime, 
+                               self.time, self._currentTime)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

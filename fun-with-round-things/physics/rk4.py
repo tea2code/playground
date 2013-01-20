@@ -8,7 +8,8 @@ class Rk4:
         x -- The current step number.
         h -- The change in step number.
         state -- The current state.
-        func -- The function to integrate. This function must take x, h, state and (optional) derivate as parameters. Must return the derivate.
+        func -- The function to integrate. This function must take x, h, state and (optional) 
+                derivate as parameters. Must return the derivate.
         
         Returns the new state.
         '''

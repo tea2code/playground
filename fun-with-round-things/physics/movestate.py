@@ -52,7 +52,8 @@ class MoveState:
         >>> print(m)
         MoveState(force Vector2d(0.00, 0.00), mass 0.00, momentum Vector2d(0.00, 0.00), position Vector2d(0.00, 0.00))
         '''
-        return 'MoveState(force {0}, mass {1:.2f}, momentum {2}, position {3})'.format(self.force, self.mass, self.momentum, self.position)
+        template = 'MoveState(force {0}, mass {1:.2f}, momentum {2}, position {3})'
+        return template.format(self.force, self.mass, self.momentum, self.position)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

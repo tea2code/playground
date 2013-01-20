@@ -34,7 +34,8 @@ class Rect:
         >>> print( r )
         Rect(angle 0.00, height 1.00, position Vector2d(0.00, 0.00), width 1.00)
         '''
-        return 'Rect(angle {0:.2f}, height {1:.2f}, position {2}, width {3:.2f})'.format(self.angle, self.height, self.position, self.width)
+        template = 'Rect(angle {0:.2f}, height {1:.2f}, position {2}, width {3:.2f})'
+        return template.format(self.angle, self.height, self.position, self.width)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

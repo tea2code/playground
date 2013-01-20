@@ -42,7 +42,10 @@ class World:
         >>> print(w)
         World(height 1.00, map None, start Vector2d(0.00, 0.00), target Vector2d(0.00, 0.00), timelimit 0.00, width 1.00)
         '''
-        return 'World(height {0:.2f}, map {1}, start {2}, target {3}, timelimit {4:.2f}, width {5:.2f})'.format( self.height, self.map, self.start, self.target, self.timelimit, self.width )
+        template = ('World(height {0:.2f}, map {1}, start {2}, target {3}, timelimit {4:.2f}, '
+                    'width {5:.2f})')
+        return template.format( self.height, self.map, self.start, self.target, self.timelimit, 
+                                self.width )
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

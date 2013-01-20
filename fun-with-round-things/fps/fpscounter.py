@@ -86,7 +86,8 @@ class FpsCounter():
         FpsCounter(maxNum 20, measurements [], _lastTime 0.00)
         '''
         measurements = ", ".join( [str(element) for element in self.measurements]  )
-        return 'FpsCounter(maxNum {0}, measurements [{1}], _lastTime {2:.2f})'.format(self.maxNum, measurements, self._lastTime)
+        template = 'FpsCounter(maxNum {0}, measurements [{1}], _lastTime {2:.2f})'
+        return template.format(self.maxNum, measurements, self._lastTime)
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

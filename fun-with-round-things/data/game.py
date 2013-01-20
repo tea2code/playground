@@ -38,7 +38,9 @@ class Game:
         >>> print(g)
         Game(author , date , description , name , version , world None)
         '''
-        return 'Game(author {0}, date {1}, description {2}, name {3}, version {4}, world {5})'.format( self.author, self.date, self.description, self.name, self.version, self.world )
+        template = 'Game(author {0}, date {1}, description {2}, name {3}, version {4}, world {5})'
+        return template.format( self.author, self.date, self.description, self.name, self.version, 
+                                self.world )
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )
