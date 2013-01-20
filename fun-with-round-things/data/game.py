@@ -1,4 +1,4 @@
-class Game:
+﻿class Game:
     ''' This represents a single game like a level/map. 
     
     Member:

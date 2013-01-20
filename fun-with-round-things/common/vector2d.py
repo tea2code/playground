@@ -1,4 +1,4 @@
-class Vector2d:
+﻿class Vector2d:
     ''' Class representing an 2d vector. 
     
     Member:

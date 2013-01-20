@@ -1,4 +1,4 @@
-from common import tickable
+﻿from common import tickable
 
 class GameRules( tickable.Tickable ):
     ''' Controls the rules in a game. '''

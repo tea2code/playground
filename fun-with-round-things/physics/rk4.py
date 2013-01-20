@@ -1,4 +1,4 @@
-class Rk4:
+﻿class Rk4:
 
     @staticmethod
     def integrate( x, h, state, func ):

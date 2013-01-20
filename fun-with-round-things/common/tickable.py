@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod  
+﻿from abc import ABCMeta, abstractmethod  
 
 class Tickable(metaclass = ABCMeta):
     ''' This abstract class describes a module which will be executed in every step and can 

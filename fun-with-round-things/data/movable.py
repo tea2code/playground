@@ -1,4 +1,4 @@
-from abc import ABCMeta
+﻿from abc import ABCMeta
 from common.vector2d import *
 
 class Movable(metaclass = ABCMeta):

@@ -1,4 +1,4 @@
-import xml.sax as sax
+﻿import xml.sax as sax
 
 from map.mapparser import *
 

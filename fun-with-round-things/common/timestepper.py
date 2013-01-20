@@ -1,4 +1,4 @@
-import time
+﻿import time
 
 class Timestepper:
     ''' Calls a function based on predefined time steps. This function does not contain a automatic 

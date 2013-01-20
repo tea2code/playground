@@ -1,4 +1,4 @@
-import time
+﻿import time
 from collections import deque
 
 class FpsCounter():

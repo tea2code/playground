@@ -1,4 +1,4 @@
-from common.vector2d import *
+﻿from common.vector2d import *
 
 class World:
     ''' This represents the world aka a collection of maps of a game. 

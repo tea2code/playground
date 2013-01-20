@@ -1,4 +1,4 @@
-from data.circle import *
+﻿from data.circle import *
 from map.maploader import *
 
 class GameStarter:

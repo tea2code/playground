@@ -1,4 +1,4 @@
-from common.vector2d import *
+﻿from common.vector2d import *
 
 class Data:
     ''' This class represents all the data available in the current game which is equivalent to 

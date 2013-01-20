@@ -1,4 +1,4 @@
-from common.vector2d import *
+﻿from common.vector2d import *
 
 class Rect:
     ''' A non-movable rect object. 

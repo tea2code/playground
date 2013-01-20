@@ -1,4 +1,4 @@
-import xml.sax as sax
+﻿import xml.sax as sax
 
 from common.vector2d import *
 from data.game import *

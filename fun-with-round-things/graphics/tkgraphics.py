@@ -1,4 +1,4 @@
-from common import tickable
+﻿from common import tickable
 from tkinter import *
 
 class TkGraphics( tickable.Tickable ):
