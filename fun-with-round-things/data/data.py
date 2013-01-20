@@ -8,6 +8,7 @@ class Data:
     circles -- A list of circle objects.
     deltaTime -- The time difference since the last step.
     fps -- The current frame rate.
+    game -- The game object.
     target -- The target to hit.
     time -- The accumulated time of all steps.
     windowHeight -- Height of the window.
@@ -18,6 +19,7 @@ class Data:
     circles = []
     deltaTime = 0
     fps = 0
+    game = None
     target = Vector2d.nullVector()
     time = 0
     timeLimit = 0
