@@ -7,8 +7,8 @@ from data.rect import *
 from data.world import *
 
 class MapParser( sax.handler.ContentHandler ):
-    ''' This parser creates a representation of a xml map. If an parsing error occures any method can
-    throw a SAXParseException.
+    ''' This parser creates a representation of a xml map. If an parsing error occures any method 
+    can throw a SAXParseException.
 
     Constants:
     ATTR_PARSER
@@ -134,7 +134,8 @@ class MapParser( sax.handler.ContentHandler ):
             self._elementStack.append( name )
             self.game.world = World()
         else:
-            if name not in [self.TAG_AUTHOR, self.TAG_DATE, self.TAG_DESCRIPTION, self.TAG_NAME, self.TAG_VERSION]:
+            if name not in [self.TAG_AUTHOR, self.TAG_DATE, self.TAG_DESCRIPTION, self.TAG_NAME, 
+                            self.TAG_VERSION]:
                 raise sax.SAXParseException( self._errorUnknown % (name) )
         
     def __mapEnd( self, name ):
@@ -214,7 +215,8 @@ class MapParser( sax.handler.ContentHandler ):
             self._elementStack.append( name )
             self.game.world.map = Map()
         else:
-            if name not in [self.TAG_HEIGHT, self.TAG_WIDTH, self.TAG_START, self.TAG_TARGET, self.TAG_TIMELIMIT, self.TAG_X, self.TAG_Y]:
+            if name not in [self.TAG_HEIGHT, self.TAG_WIDTH, self.TAG_START, self.TAG_TARGET, 
+                            self.TAG_TIMELIMIT, self.TAG_X, self.TAG_Y]:
                 raise sax.SAXParseException( self._errorUnknown % (name) )
                 
 if __name__ == '__main__':
