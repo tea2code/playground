@@ -19,8 +19,14 @@ class Fps( tickable.Tickable ):
     def __init__( self, maxTickCounts, measurementPoints ):
         ''' Test:
         >>> f = Fps( 10, 20 )
+        >>> f.fpsCounter # doctest: +ELLIPSIS
+        <...FpsCounter object at 0x...>
         >>> f.maxTickCounts
         10
+        >>> f.started
+        False
+        >>> f.tickCounter
+        0
         '''
         self.maxTickCounts = maxTickCounts
         self.fpsCounter = fpscounter.FpsCounter( measurementPoints )

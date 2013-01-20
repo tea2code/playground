@@ -23,6 +23,8 @@ class FpsCounter():
         42
         >>> len(f.measurements)
         0
+        >>> f._lastTime
+        0
         '''
         self.maxNum = maxNum
         

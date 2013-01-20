@@ -26,3 +26,32 @@ class Data:
     windowHeight = 0
     windowTitle = ''
     windowWidth = 0
+    
+    def __init__( self ):
+        ''' Test: 
+        >>> d = Data()
+        >>> len(d.circles)
+        0
+        >>> d.deltaTime
+        0
+        >>> d.fps
+        0
+        >>> d.game
+        >>> d.target.x == 0 and d.target.y == 0
+        True
+        >>> d.time
+        0
+        >>> d.timeLimit
+        0
+        >>> d.windowHeight
+        0
+        >>> d.windowTitle
+        ''
+        >>> d.windowWidth
+        0
+        '''
+    
+if __name__ == '__main__':
+    print( 'Executing doctest.' )
+    import doctest
+    doctest.testmod()

@@ -10,7 +10,15 @@ class Vector2d:
     y = 0
     
     def __init__( self, x, y ):
-        ''' Constructor with the x and y component as parameters. '''
+        ''' Constructor with the x and y component as parameters. 
+        
+        Test:
+        >>> v = Vector2d(1, 2)
+        >>> v.x
+        1
+        >>> v.y
+        2
+        '''
         self.x = x
         self.y = y
         

@@ -24,10 +24,18 @@ class Timestepper:
     def __init__( self, deltaTime, func ):
         ''' Test:
         >>> t = Timestepper( 0.1, lambda t, dt: t + dt )
+        >>> t.accumulator
+        0
         >>> t.deltaTime
         0.1
         >>> t.func # doctest: +ELLIPSIS
         <function <lambda> at 0x...>
+        >>> t.maxFrameTime
+        0.25
+        >>> t.time
+        0
+        >>> t._currentTime
+        0
         '''
         self.deltaTime = deltaTime
         self.func = func

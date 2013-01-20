@@ -12,6 +12,16 @@ class Circle( movable.Movable ):
     color = 'black'
     radius = 1
     
+    def __init__( self ):
+        ''' Test:
+        >>> c = Circle()
+        >>> c.color
+        'black'
+        >>> c.radius
+        1
+        '''
+        super().__init__()
+    
     def setColor( self, color ):
         ''' Sets the color and returns the object. 
         
@@ -48,6 +58,5 @@ class Circle( movable.Movable ):
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )
-    print( Circle() )
     import doctest
     doctest.testmod()

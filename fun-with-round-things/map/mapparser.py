@@ -77,6 +77,7 @@ class MapParser( sax.handler.ContentHandler ):
         0
         >>> m._vectorContent
         '''
+        super().__init__()
     
     def startElement( self, name, attrs ): 
         self._content = ''
