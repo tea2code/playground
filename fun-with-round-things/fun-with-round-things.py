@@ -9,8 +9,27 @@ from data import *
 from gamerules.gamestarter import *
 
 class Fun:
+    ''' Main class.
+
+    Member:
+    data -- The "global" data object.
+    fps -- The frames per second counter.
+    frameTime -- "Should be" time of one frame.
+    gameRules -- The module responsible for game rules.
+    graphics -- The module responsible for visualizing the data.
+    loopTime -- The overall refreshing time of the main loop. 
+    physics -- The module responsible for physics.
+    timestepper -- The frame ticker.
+    windowTitle -- The window title.
+    '''
+    data = None
+    fps = None
     frameTime = 1/60
+    gameRules = None
+    graphics = None
     loopTime = 1
+    physics = None
+    timestepper = None
     windowTitle = 'Fun with round things'
 
     def __init__( self ):
@@ -37,12 +56,14 @@ class Fun:
         self.timestepper.time = self.frameTime
         
     def begin( self ):
+        ''' Start the application. '''
         # Start.
         self.timestepper.start()
         self.__callNextState()
         self.graphics.window.mainloop()
     
     def calculateNextState( self, t, dt ):
+        ''' Callback function for the frame ticker. Executes all modules on the data. '''
         self.data.deltaTime = dt
         self.data.time = t
         self.physics.tick( self.data )
@@ -51,9 +72,11 @@ class Fun:
         self.fps.tick( self.data ) 
     
     def __callNextState( self ):
+        ''' Return to main loop. '''
         self.graphics.canvas.after( self.loopTime, self.__nextState )
     
     def __nextState( self ):
+        ''' Callback function for the main loop. '''
         self.timestepper.tick()    
         self.__callNextState()
         
