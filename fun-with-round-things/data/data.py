@@ -1,4 +1,4 @@
-﻿from common.vector2d import *
+﻿from common import vector2d
 
 class Data:
     ''' This class represents all the data available in the current game which is equivalent to 
@@ -20,7 +20,7 @@ class Data:
     deltaTime = 0
     fps = 0
     game = None
-    target = Vector2d.nullVector()
+    target = vector2d.Vector2d.nullVector()
     time = 0
     timeLimit = 0
     windowHeight = 0

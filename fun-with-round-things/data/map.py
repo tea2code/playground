@@ -1,6 +1,4 @@
-﻿from common.vector2d import *
-
-class Map:
+﻿class Map:
     ''' This represents the actual map.
 
     Member:

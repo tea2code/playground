@@ -1,4 +1,4 @@
-﻿from common.vector2d import *
+﻿from common import vector2d
 
 class Rect:
     ''' A non-movable rect object. 
@@ -26,7 +26,7 @@ class Rect:
         >>> r.width
         1
         '''
-        self.position = Vector2d.nullVector()
+        self.position = vector2d.Vector2d.nullVector()
         
     def __str__( self ):
         ''' Test:

@@ -1,4 +1,4 @@
-﻿from common.vector2d import *
+﻿from common import vector2d
 
 class World:
     ''' This represents the world aka a collection of maps of a game. 
@@ -33,8 +33,8 @@ class World:
         >>> w.width
         1
         '''
-        self.start = Vector2d.nullVector()
-        self.target = Vector2d.nullVector()
+        self.start = vector2d.Vector2d.nullVector()
+        self.target = vector2d.Vector2d.nullVector()
         
     def __str__( self ):
         ''' Test:

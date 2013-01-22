@@ -1,4 +1,4 @@
-﻿from common.vector2d import *
+﻿from common import vector2d
 
 class MoveState:
     ''' State class for integration of movable objects. 
@@ -27,9 +27,9 @@ class MoveState:
         >>> m.momentum.x == 0 and m.momentum.y == 0
         True
         '''
-        self.force = Vector2d.nullVector()
-        self.momentum = Vector2d.nullVector()
-        self.position = Vector2d.nullVector()
+        self.force = vector2d.Vector2d.nullVector()
+        self.momentum = vector2d.Vector2d.nullVector()
+        self.position = vector2d.Vector2d.nullVector()
 
     def velocity( self ):
         ''' Calculates the current velocity and returns it (Vector2d).

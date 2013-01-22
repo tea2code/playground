@@ -1,5 +1,5 @@
 ﻿from abc import ABCMeta
-from common.vector2d import *
+from common import vector2d
 
 class Movable(metaclass = ABCMeta):
     ''' This abstract class represents a movable object. 
@@ -28,8 +28,8 @@ class Movable(metaclass = ABCMeta):
         >>> m.momentum.x == 0 and m.momentum.y == 0
         True
         '''
-        self.momentum = Vector2d.nullVector()
-        self.position = Vector2d.nullVector()
+        self.momentum = vector2d.Vector2d.nullVector()
+        self.position = vector2d.Vector2d.nullVector()
     
     def addForce( self, force ):
         ''' Adds force to object (Vector2d). Returns this.
@@ -72,7 +72,7 @@ class Movable(metaclass = ABCMeta):
         >>> v.x == 4 and v.y == 5
         True
         '''
-        sum = Vector2d.nullVector()
+        sum = vector2d.Vector2d.nullVector()
         for force in self.forces:
             sum += force
         return sum

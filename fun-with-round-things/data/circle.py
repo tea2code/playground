@@ -1,5 +1,4 @@
 ﻿from . import movable
-from common.vector2d import *
 
 class Circle( movable.Movable ):
     ''' Class representing a circle. 

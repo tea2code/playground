@@ -1,5 +1,6 @@
 ﻿from common import tickable
-from tkinter import *
+
+import tkinter
 
 class TkGraphics( tickable.Tickable ):
     ''' This class handles the visualisation of the current state. 
@@ -14,9 +15,9 @@ class TkGraphics( tickable.Tickable ):
     
     def __init__( self, data ):
         ''' The parameter data which contains the window settings. '''
-        self.window = Tk()
+        self.window = tkinter.Tk()
         self.window.title( data.windowTitle )
-        self.canvas = Canvas( self.window, width = data.windowWidth, height = data.windowHeight )
+        self.canvas = tkinter.Canvas( self.window, width = data.windowWidth, height = data.windowHeight )
         self.canvas.pack(),
         self.canvas.configure( background = 'white' )
     
@@ -24,7 +25,7 @@ class TkGraphics( tickable.Tickable ):
         ''' Implementation of Tickable.tick().
 
         Draws the current state (data) on the canvas. '''
-        self.canvas.delete( ALL )
+        self.canvas.delete( tkinter.ALL )
         
         for circle in data.circles:
             x = circle.position.x

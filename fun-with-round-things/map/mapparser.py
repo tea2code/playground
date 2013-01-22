@@ -1,10 +1,10 @@
 ﻿import xml.sax as sax
 
-from common.vector2d import *
-from data.game import *
-from data.map import *
-from data.rect import *
-from data.world import *
+from common import vector2d
+from data import game
+from data import map
+from data import rect
+from data import world
 
 class MapParser( sax.handler.ContentHandler ):
     ''' This parser creates a representation of a xml map. If an parsing error occures any method 
@@ -128,12 +128,12 @@ class MapParser( sax.handler.ContentHandler ):
         if name == self.TAG_GAME:
             if int(attrs[self.ATTR_PARSER]) <= self.PARSER_VERSION:
                 self._elementStack.append( name )
-                self.game = Game()
+                self.game = game.Game()
             else:
                 raise sax.SAXParseException( self._errorVersion % (attrs.get(self.ATTR_PARSER)) )
         elif name == self.TAG_WORLD:
             self._elementStack.append( name )
-            self.game.world = World()
+            self.game.world = world.World()
         else:
             if name not in [self.TAG_AUTHOR, self.TAG_DATE, self.TAG_DESCRIPTION, self.TAG_NAME, 
                             self.TAG_VERSION]:
@@ -151,7 +151,7 @@ class MapParser( sax.handler.ContentHandler ):
     def __mapStart( self, name, attrs ):
         if name == self.TAG_RECT:
             self._elementStack.append( name )
-            self.game.world.map.objects.append( Rect() )
+            self.game.world.map.objects.append( rect.Rect() )
         else:
             if name not in [self.TAG_BORDER]:
                 raise sax.SAXParseException( self._errorUnknown % (name) )
@@ -180,12 +180,12 @@ class MapParser( sax.handler.ContentHandler ):
     
     def __vectorX( self, x ):
         if self._vectorContent is None:
-            self._vectorContent = Vector2d.nullVector()
+            self._vectorContent = vector2d.Vector2d.nullVector()
         self._vectorContent.x = float(x)
     
     def __vectorY( self, y ):
         if self._vectorContent is None:
-            self._vectorContent = Vector2d.nullVector()
+            self._vectorContent = vector2d.Vector2d.nullVector()
         self._vectorContent.y = float(y)
     
     def __worldEnd( self, name ):
@@ -214,7 +214,7 @@ class MapParser( sax.handler.ContentHandler ):
     def __worldStart( self, name, attrs ):
         if name == self.TAG_MAP:
             self._elementStack.append( name )
-            self.game.world.map = Map()
+            self.game.world.map = map.Map()
         else:
             if name not in [self.TAG_HEIGHT, self.TAG_WIDTH, self.TAG_START, self.TAG_TARGET, 
                             self.TAG_TIMELIMIT, self.TAG_X, self.TAG_Y]:

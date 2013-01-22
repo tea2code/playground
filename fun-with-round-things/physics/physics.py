@@ -1,6 +1,6 @@
 ﻿import random
-from .moveheun import *
-from .movestate import *
+from . import moveheun
+from . import movestate
 from common import tickable
 
 class Physics( tickable.Tickable ):
@@ -13,13 +13,13 @@ class Physics( tickable.Tickable ):
 
         if data.time < data.timeLimit + 0.00001:
             for circle in data.circles:
-                state = MoveState()
+                state = movestate.MoveState()
                 state.force = circle.sumForces()
                 state.mass = circle.mass
                 state.momentum = circle.momentum
                 state.position = circle.position
  
-                newState = MoveHeun.integrate( state, data.deltaTime )
+                newState = moveheun.MoveHeun.integrate( state, data.deltaTime )
                 circle.momentum = newState.momentum
                 circle.position = newState.position
                 

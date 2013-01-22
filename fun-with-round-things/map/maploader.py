@@ -1,6 +1,6 @@
 ﻿import xml.sax as sax
 
-from map.mapparser import *
+from map import mapparser
 
 class MapLoader():
     ''' Loads maps from files. '''
@@ -8,7 +8,7 @@ class MapLoader():
     def load( self, mapFile ):
         ''' Loads the given map file. Throws SAXParseException in case of an error. 
         Returns the game object. '''
-        handler = MapParser() 
+        handler = mapparser.MapParser() 
         parser = sax.make_parser() 
         parser.setContentHandler( handler ) 
         parser.parse( mapFile ) 

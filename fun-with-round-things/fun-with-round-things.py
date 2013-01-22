@@ -1,12 +1,10 @@
-﻿import fps.fps
-import gamerules.gamerules
-import graphics.tkgraphics
-import physics.physics
-
-from common.timestepper import *
-from common.vector2d import *
-from data import *
-from gamerules.gamestarter import *
+﻿from common import timestepper
+from data import data
+from fps import fps
+from gamerules import gamerules
+from gamerules import gamestarter
+from graphics import tkgraphics
+from physics import physics
 
 class Fun:
     ''' Main class.
@@ -35,24 +33,24 @@ class Fun:
     def __init__( self ):
         # Initialize game data.
         self.data = data.Data()
-        gameStarter = GameStarter( self.data )
+        gameStarter = gamestarter.GameStarter( self.data )
         gameStarter.load( 'maps/Integration Test.xml' )
         self.data.windowTitle = self.windowTitle
 
         # Initialize physics.
-        self.physics = physics.physics.Physics()
+        self.physics = physics.Physics()
         
         # Initialize game rules.
-        self.gameRules = gamerules.gamerules.GameRules()
+        self.gameRules = gamerules.GameRules()
 
         # Initialize graphics.
-        self.graphics = graphics.tkgraphics.TkGraphics( self.data )
+        self.graphics = tkgraphics.TkGraphics( self.data )
     
         # Initialize fps counter.
-        self.fps = fps.fps.Fps( 60, 120 )
+        self.fps = fps.Fps( 60, 120 )
         
         # Initialize time stepper.
-        self.timestepper = Timestepper( self.frameTime, self.calculateNextState )
+        self.timestepper = timestepper.Timestepper( self.frameTime, self.calculateNextState )
         self.timestepper.time = self.frameTime
         
     def begin( self ):
