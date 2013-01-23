@@ -17,7 +17,7 @@ class TkGraphics( tickable.Tickable ):
         ''' The parameter data which contains the window settings. '''
         self.window = tkinter.Tk()
         self.window.title( data.windowTitle )
-        self.canvas = tkinter.Canvas( self.window, width = data.windowWidth, height = data.windowHeight )
+        self.canvas = tkinter.Canvas( self.window, width = data.game.world.width, height = data.game.world.height )
         self.canvas.pack(),
         self.canvas.configure( background = 'white' )
     
@@ -34,7 +34,8 @@ class TkGraphics( tickable.Tickable ):
             c = circle.color
             self.canvas.create_oval( x - r, y - r, x + r, y + r, width = r, fill = c, outline = c )
             
-        self.canvas.create_line( data.target.x - 5, data.target.y, data.target.x + 5, data.target.y )
-        self.canvas.create_line( data.target.x, data.target.y - 5, data.target.x, data.target.y + 5 )
+        target = data.game.world.target
+        self.canvas.create_line( target.x - 5, target.y,     target.x + 5, target.y     )
+        self.canvas.create_line( target.x,     target.y - 5, target.x,     target.y + 5 )
             
         self.window.title( data.windowTitle + ' (FPS ' + str(data.fps) + ')' )

@@ -30,10 +30,6 @@ class GameStarter:
         mapFile -- The path to the map. '''
         mapLoader = maploader.MapLoader()
         self._data.game = mapLoader.load( mapFile )
-        self._data.target = self._data.game.world.target
-        self._data.timeLimit = self._data.game.world.timelimit
-        self._data.windowHeight = self._data.game.world.height
-        self._data.windowWidth = self._data.game.world.width
         
         self._data.acceleration = 14 # Pixel per second^2
         
