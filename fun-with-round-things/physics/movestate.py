@@ -37,7 +37,7 @@ class MoveState:
         Test:
         >>> m = MoveState()
         >>> m.mass = 2
-        >>> m.momentum = Vector2d(10, 6)
+        >>> m.momentum = vector2d.Vector2d(10, 6)
         >>> v = m.velocity()
         >>> round(v.x)
         5

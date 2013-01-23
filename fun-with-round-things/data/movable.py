@@ -36,7 +36,7 @@ class Movable(metaclass = ABCMeta):
 
         Test:
         >>> m = Movable()
-        >>> m.addForce( Vector2d(1, 2) ) # doctest: +ELLIPSIS
+        >>> m.addForce( vector2d.Vector2d(1, 2) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
         >>> m.forces[0].x == 1 and m.forces[0].y == 2
         True
@@ -49,7 +49,7 @@ class Movable(metaclass = ABCMeta):
 
         Test:
         >>> m = Movable()
-        >>> m.addForce( Vector2d(1, 2) ) # doctest: +ELLIPSIS
+        >>> m.addForce( vector2d.Vector2d(1, 2) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
         >>> len(m.clearForces().forces) == 0
         True
@@ -62,11 +62,11 @@ class Movable(metaclass = ABCMeta):
         
         Test:
         >>> m = Movable()
-        >>> m.addForce( Vector2d(1, 0) ) # doctest: +ELLIPSIS
+        >>> m.addForce( vector2d.Vector2d(1, 0) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
-        >>> m.addForce( Vector2d(0, 2) ) # doctest: +ELLIPSIS
+        >>> m.addForce( vector2d.Vector2d(0, 2) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
-        >>> m.addForce( Vector2d(3, 3) ) # doctest: +ELLIPSIS
+        >>> m.addForce( vector2d.Vector2d(3, 3) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
         >>> v = m.sumForces()
         >>> v.x == 4 and v.y == 5
@@ -95,7 +95,7 @@ class Movable(metaclass = ABCMeta):
         
         Test:
         >>> m = Movable()
-        >>> m.setMomentum( Vector2d(2, 3) ) # doctest: +ELLIPSIS
+        >>> m.setMomentum( vector2d.Vector2d(2, 3) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
         >>> m.momentum.x == 2 and m.momentum.y == 3
         True
@@ -108,7 +108,7 @@ class Movable(metaclass = ABCMeta):
         
         Test:
         >>> m = Movable()
-        >>> m.setPosition( Vector2d(2, 3) ) # doctest: +ELLIPSIS
+        >>> m.setPosition( vector2d.Vector2d(2, 3) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
         >>> m.position.x == 2 and m.position.y == 3
         True
