@@ -61,7 +61,7 @@
         10
         '''
         return Vector2d( self.x * scalar, self.y * scalar )
-        
+    
     def __str__( self ):
         ''' Test:
         >>> v = Vector2d(1, 2.01)
@@ -69,7 +69,21 @@
         Vector2d(1.00, 2.01)
         '''
         return 'Vector2d({:.2f}, {:.2f})'.format(self.x, self.y)
-        
+    
+    def __sub__( self, other ):
+        ''' Subtract two vectors using - operator. Returns resulting vector.
+
+        Test:
+        >>> v1 = Vector2d(1, 4)
+        >>> v2 = Vector2d(3, 2)
+        >>> v3 = v1 - v2
+        >>> v3.x
+        -2
+        >>> v3.y
+        2
+        '''
+        return Vector2d( self.x - other.x, self.y - other.y )
+    
 if __name__ == '__main__':
     print( 'Executing doctest.' )
     import doctest

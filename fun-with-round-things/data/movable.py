@@ -49,8 +49,12 @@ class Movable(metaclass = ABCMeta):
 
         Test:
         >>> m = Movable()
+        >>> m.clearForces() # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
         >>> m.addForce( vector2d.Vector2d(1, 2) ) # doctest: +ELLIPSIS
         <...Movable object at 0x...>
+        >>> len(m.forces)
+        1
         >>> len(m.clearForces().forces) == 0
         True
         '''

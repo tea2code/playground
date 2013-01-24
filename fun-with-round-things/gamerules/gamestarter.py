@@ -31,12 +31,16 @@ class GameStarter:
         mapLoader = maploader.MapLoader()
         self._data.game = mapLoader.load( mapFile )
         
-        self._data.acceleration = 14 # Pixel per second^2
+        # Calculate force us s = 0.5 a t^2 -> a = 2s / t^2
+        mass = 1
+        distance = self._data.game.world.target - self._data.game.world.start
+        acceleration = distance * (2 / (self._data.game.world.timelimit * self._data.game.world.timelimit))
+        force = acceleration * mass
         
         c = circle.Circle()
         c.setPosition( self._data.game.world.start )
         c.setRadius( 10 )
         c.setColor( 'Green' )
-        c.setMass( 1 )
-        c.addForce( vector2d.Vector2d(self._data.acceleration, 0) )
+        c.setMass( mass )
+        c.addForce( force )
         self._data.circles.append( c )

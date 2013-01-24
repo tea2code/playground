@@ -34,7 +34,8 @@ class Fun:
         # Initialize game data.
         self.data = data.Data()
         gameStarter = gamestarter.GameStarter( self.data )
-        gameStarter.load( 'maps/Integration Test.xml' )
+        #gameStarter.load( 'maps/Integration Test.xml' )
+        gameStarter.load( 'maps/01 - First Example.xml' )
         self.data.windowTitle = self.windowTitle
 
         # Initialize physics.
@@ -64,8 +65,8 @@ class Fun:
         ''' Callback function for the frame ticker. Executes all modules on the data. '''
         self.data.deltaTime = dt
         self.data.time = t
-        self.physics.tick( self.data )
         self.gameRules.tick( self.data )
+        self.physics.tick( self.data )
         self.graphics.tick( self.data )
         self.fps.tick( self.data ) 
     

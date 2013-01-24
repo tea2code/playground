@@ -1,4 +1,5 @@
 ﻿from common import tickable
+from common import vector2d
 
 class GameRules( tickable.Tickable ):
     ''' Controls the rules in a game. '''
@@ -8,4 +9,7 @@ class GameRules( tickable.Tickable ):
 
         Checks the game rules.'''
         
-        # Nothing to do here. At least for now.
+        if data.time > data.game.world.timelimit:
+            for circle in data.circles:
+                circle.clearForces()
+                circle.setMomentum( vector2d.Vector2d.nullVector() )

@@ -20,7 +20,7 @@
             <x>600</x>
             <y>600</y>
         </target>
-        <timelimit>300</timelimit>
+        <timelimit>5</timelimit>
         <map>
             <border>10</border>
             <rect>
