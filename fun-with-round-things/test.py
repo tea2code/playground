@@ -11,6 +11,7 @@ import fps.fps
 import fps.fpscounter
 import gamerules.gamestarter
 import graphics.border
+import graphics.rect
 import map.mapparser
 import physics.movestate
 
@@ -29,5 +30,6 @@ if __name__ == '__main__':
     doctest.testmod( fps.fpscounter )
     doctest.testmod( gamerules.gamestarter )
     doctest.testmod( graphics.border )
+    doctest.testmod( graphics.rect )
     doctest.testmod( physics.movestate )
     doctest.testmod( map.mapparser )

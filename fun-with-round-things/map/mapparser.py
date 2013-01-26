@@ -170,6 +170,7 @@ class MapParser( sax.handler.ContentHandler ):
         else:
             if name == self.TAG_RECT:
                 self.game.world.map.objects[-1].position = self._vectorContent
+                self._vectorContent = None
                 self._elementStack.pop()
             else:
                 raise sax.SAXParseException( self._errorUnknown % (name) )

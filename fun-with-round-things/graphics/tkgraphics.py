@@ -1,5 +1,7 @@
 ﻿from common import tickable
+from data import rect as datarect
 from graphics import border
+from graphics import rect 
 
 import tkinter
 
@@ -25,7 +27,8 @@ class TkGraphics( tickable.Tickable ):
     def tick( self, data ):
         ''' Implementation of Tickable.tick().
 
-        Draws the current state (data) on the canvas. '''
+        Draws the current state (data) on the canvas. Throws TypeError if game.world.map.objects
+        contains an unknown type. '''
         
         # Reset everything.
         self.canvas.delete( tkinter.ALL )
@@ -46,6 +49,15 @@ class TkGraphics( tickable.Tickable ):
         # Draw borders.
         b = border.Border( data.game.world.map.border )
         b.draw( self.canvas )
+        
+        # Draw objects.
+        for object in data.game.world.map.objects:
+            if isinstance( object, datarect.Rect ):
+                r = rect.Rect( object.angle, object.height, object.width, 
+                               object.position.x, object.position.y )
+                r.draw( self.canvas )
+            else:
+                raise TypeError( 'Unknown object "{0}" in map'.format(object) )
             
         # Set window title with current frames per second.
         self.window.title( data.windowTitle + ' (FPS ' + str(data.fps) + ')' )
