@@ -169,8 +169,7 @@ class MapParser( sax.handler.ContentHandler ):
             self.__vectorY( self._content )
         else:
             if name == self.TAG_RECT:
-                self.game.world.map.objects[-1].position = self._vectorContent
-                self._vectorContent = None
+                self.game.world.map.objects[-1].position = self.__vectorContent()
                 self._elementStack.pop()
             else:
                 raise sax.SAXParseException( self._errorUnknown % (name) )
@@ -178,6 +177,11 @@ class MapParser( sax.handler.ContentHandler ):
     def __rectStart( self, name, attrs ):
         if name not in [self.TAG_ANGLE, self.TAG_HEIGHT, self.TAG_WIDTH, self.TAG_X, self.TAG_Y]:
             raise sax.SAXParseException( self._errorUnknown % (name) )
+    
+    def __vectorContent( self ):
+        v = self._vectorContent
+        self._vectorContent = None
+        return v
     
     def __vectorX( self, x ):
         if self._vectorContent is None:
@@ -193,11 +197,9 @@ class MapParser( sax.handler.ContentHandler ):
         if name == self.TAG_HEIGHT:
             self.game.world.height = float(self._content)
         elif name == self.TAG_START:
-            self.game.world.start = self._vectorContent
-            self._vectorContent = None
+            self.game.world.start = self.__vectorContent()
         elif name == self.TAG_TARGET:
-            self.game.world.target = self._vectorContent
-            self._vectorContent = None
+            self.game.world.target = self.__vectorContent()
         elif name == self.TAG_TIMELIMIT:
             self.game.world.timelimit = float(self._content)
         elif name == self.TAG_WIDTH:
