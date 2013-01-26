@@ -1,4 +1,5 @@
 ﻿from common import tickable
+from graphics import border
 
 import tkinter
 
@@ -25,8 +26,11 @@ class TkGraphics( tickable.Tickable ):
         ''' Implementation of Tickable.tick().
 
         Draws the current state (data) on the canvas. '''
+        
+        # Reset everything.
         self.canvas.delete( tkinter.ALL )
         
+        # Draw circles.
         for circle in data.circles:
             x = circle.position.x
             y = circle.position.y
@@ -34,8 +38,14 @@ class TkGraphics( tickable.Tickable ):
             c = circle.color
             self.canvas.create_oval( x - r, y - r, x + r, y + r, width = r, fill = c, outline = c )
             
+        # Draw target.
         target = data.game.world.target
         self.canvas.create_line( target.x - 5, target.y,     target.x + 5, target.y     )
         self.canvas.create_line( target.x,     target.y - 5, target.x,     target.y + 5 )
             
+        # Draw borders.
+        b = border.Border( data.game.world.map.border )
+        b.draw( self.canvas )
+            
+        # Set window title with current frames per second.
         self.window.title( data.windowTitle + ' (FPS ' + str(data.fps) + ')' )

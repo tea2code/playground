@@ -10,6 +10,7 @@ import data.world
 import fps.fps
 import fps.fpscounter
 import gamerules.gamestarter
+import graphics.border
 import map.mapparser
 import physics.movestate
 
@@ -27,5 +28,6 @@ if __name__ == '__main__':
     doctest.testmod( fps.fps )
     doctest.testmod( fps.fpscounter )
     doctest.testmod( gamerules.gamestarter )
+    doctest.testmod( graphics.border )
     doctest.testmod( physics.movestate )
     doctest.testmod( map.mapparser )
