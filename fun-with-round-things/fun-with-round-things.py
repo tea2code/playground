@@ -6,6 +6,9 @@ from gamerules import gamestarter
 from graphics import tkgraphics
 from physics import physics
 
+import argparse
+import os
+
 class Fun:
     ''' Main class.
 
@@ -31,11 +34,19 @@ class Fun:
     windowTitle = 'Fun with round things'
 
     def __init__( self ):
+        # Read arguments.
+        parser = argparse.ArgumentParser( description='Provide the map path as an argument.' )
+        parser.add_argument( 'map' )
+        args = parser.parse_args()
+        
+        # Check if map exits.
+        if not os.path.exists( args.map ):
+            raise FileNotFoundError( 'The map "'+args.map+'" was not found.' )
+        
         # Initialize game data.
         self.data = data.Data()
         gameStarter = gamestarter.GameStarter( self.data )
-        #gameStarter.load( 'maps/Integration Test.xml' )
-        gameStarter.load( 'maps/01 - First Example.xml' )
+        gameStarter.load( args.map )
         self.data.windowTitle = self.windowTitle
 
         # Initialize physics.
