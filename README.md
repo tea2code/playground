@@ -34,3 +34,6 @@ Search terms: "free tiles", "free tilesets", "free sprites"...
 - http://www.ai-blog.net/
 - http://www.barik.net/archive/2012/02/04/170025/
 - http://aigamedev.com/open/article/starting-programming/
+- http://conkerjo.wordpress.com/2009/06/13/spatial-hashing-implementation-for-fast-2d-collisions/
+- http://gamedev.stackexchange.com/questions/18261/collision-detection-structure
+- http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
