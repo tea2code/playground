@@ -46,8 +46,8 @@ class Rect( drawable.Drawable ):
         radianAngle = math.radians( self.angle )
         cosAngle = math.cos( radianAngle )
         sinAngle = math.sin( radianAngle )
-        heightHalf = self.height / 2
-        widthHalf = self.width / 2
+        heightHalf = self.height * 0.5
+        widthHalf = self.width * 0.5
         xPlus = widthHalf
         xMinus = -widthHalf
         yPlus = heightHalf
