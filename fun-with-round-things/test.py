@@ -1,4 +1,5 @@
-﻿import common.timestepper
+﻿import common.mathfunc
+import common.timestepper
 import common.vector2d
 import data.circle
 import data.data
@@ -13,10 +14,13 @@ import gamerules.gamestarter
 import graphics.border
 import graphics.rect
 import map.mapparser
+import physics.collider
+import physics.collision
 import physics.movestate
 
 if __name__ == '__main__':
     import doctest
+    doctest.testmod( common.mathfunc )
     doctest.testmod( common.timestepper )
     doctest.testmod( common.vector2d )
     doctest.testmod( data.circle )
@@ -31,5 +35,7 @@ if __name__ == '__main__':
     doctest.testmod( gamerules.gamestarter )
     doctest.testmod( graphics.border )
     doctest.testmod( graphics.rect )
-    doctest.testmod( physics.movestate )
     doctest.testmod( map.mapparser )
+    doctest.testmod( physics.collider )
+    doctest.testmod( physics.collision )
+    doctest.testmod( physics.movestate )
