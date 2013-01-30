@@ -146,6 +146,28 @@ class Movable(metaclass = ABCMeta):
         self.position.y = y
         return self
         
+    def stop( self ):
+        ''' Stops the object.
+
+        Test:
+        >>> m = Movable()
+        >>> m.addForce( vector2d.Vector2d(1, 2) ) # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
+        >>> m.setMomentum( vector2d.Vector2d(3, 2) ) # doctest: +ELLIPSIS
+        <...Movable object at 0x...>
+        >>> len(m.forces)
+        1
+        >>> m.momentum.x == 3 and m.momentum.y == 2
+        True
+        >>> m.stop()
+        >>> len(m.forces)
+        0
+        >>> m.momentum.x == 0 and m.momentum.y == 0
+        True
+        '''
+        self.clearForces()
+        self.setMomentum( vector2d.Vector2d.nullVector() )
+        
     def __str__( self ):
         ''' Test:
         >>> m = Movable()
