@@ -58,6 +58,11 @@ class TkGraphics( tickable.Tickable ):
                 r.draw( self.canvas )
             else:
                 raise TypeError( 'Unknown object "{0}" in map'.format(object) )
-            
+        
+        # Draw collisions.
+        for collision in data.collisions:
+            self.canvas.create_line( collision.x - 5, collision.y,     collision.x + 5, collision.y    , fill = 'red' )
+            self.canvas.create_line( collision.x,     collision.y - 5, collision.x,     collision.y + 5, fill = 'red' )
+        
         # Set window title with current frames per second.
         self.window.title( data.windowTitle + ' (FPS ' + str(data.fps) + ')' )

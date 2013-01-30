@@ -6,6 +6,7 @@ class Data:
     
     Member:
     circles -- A list of circle objects.
+    collisions -- A list of collision objects.
     deltaTime -- The time difference since the last step.
     fps -- The current frame rate.
     game -- The game object.
@@ -14,6 +15,7 @@ class Data:
     '''
 
     circles = []
+    collisions = []
     deltaTime = 0
     fps = 0
     game = None
@@ -24,6 +26,8 @@ class Data:
         ''' Test: 
         >>> d = Data()
         >>> len(d.circles)
+        0
+        >>> len(d.collisions)
         0
         >>> d.deltaTime
         0

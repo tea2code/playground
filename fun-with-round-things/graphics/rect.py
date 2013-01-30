@@ -70,7 +70,7 @@ class Rect( drawable.Drawable ):
         y3 = self.__transformY( xMinus, yPlus, cosAngle, sinAngle ) + self.y
         
         # Draw.
-        canvas.create_polygon( x0, y0, x1, y1, x2, y2, x3, y3, fill = 'white', outline = 'black' )
+        canvas.create_polygon( x0, y0, x1, y1, x2, y2, x3, y3, fill = '', outline = 'black' )
         
     def __transformX( self, x, y, cosAngle, sinAngle ):
         return x * cosAngle - y * sinAngle
