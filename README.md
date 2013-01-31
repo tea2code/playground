@@ -37,3 +37,5 @@ Search terms: "free tiles", "free tilesets", "free sprites"...
 - http://conkerjo.wordpress.com/2009/06/13/spatial-hashing-implementation-for-fast-2d-collisions/
 - http://gamedev.stackexchange.com/questions/18261/collision-detection-structure
 - http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
+- http://www.gamedev.net/topic/165537-2d-vector-reflection-/
+- http://stackoverflow.com/questions/1243614/how-do-i-calculate-the-normal-vector-of-a-line-segment
