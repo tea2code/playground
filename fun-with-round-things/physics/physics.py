@@ -134,8 +134,6 @@ class Physics( tickable.Tickable ):
                         cx = MathFunc.rotateX( collision.x - object.position.x, collision.y - object.position.y, -object.angle )
                         cy = MathFunc.rotateY( collision.x - object.position.x, collision.y - object.position.y, -object.angle )
                         
-                        print( 'C({:.2f}, {:.2f}), P0({:.2f}, {:.2f}), P1({:.2f}, {:.2f}), P2({:.2f}, {:.2f}), P3({:.2f}, {:.2f})'.format(cx, cy, x0, y0, x1, y1, x2, y2, x3, y3) )
-                        
                         # Compare with points and calculate reflection.
                         epsilon = 0.00001
                         lx1 = 0
@@ -143,25 +141,21 @@ class Physics( tickable.Tickable ):
                         lx2 = 0
                         ly2 = 0
                         if self.__comparePoints( cx, cy, x0, y0 - epsilon, x1, y0 + epsilon ):
-                            print( 'Edge 1' )
                             lx1 = MathFunc.rotateX( xMinus, yMinus, object.angle ) + object.position.x
                             ly1 = MathFunc.rotateY( xMinus, yMinus, object.angle ) + object.position.y
                             lx2 = MathFunc.rotateX( xPlus, yMinus, object.angle ) + object.position.x
                             ly2 = MathFunc.rotateY( xPlus, yMinus, object.angle ) + object.position.y
                         elif self.__comparePoints( cx, cy, x1 - epsilon, y1, x1 + epsilon, y2 ):
-                            print( 'Edge 2' )
                             lx1 = MathFunc.rotateX( xPlus, yMinus, object.angle ) + object.position.x
                             ly1 = MathFunc.rotateY( xPlus, yMinus, object.angle ) + object.position.y
                             lx2 = MathFunc.rotateX( xPlus, yPlus, object.angle ) + object.position.x
                             ly2 = MathFunc.rotateY( xPlus, yPlus, object.angle ) + object.position.y
                         elif self.__comparePoints( cx, cy, x3, y3 - epsilon, x2, y3 + epsilon ):
-                            print( 'Edge 3' )
                             lx1 = MathFunc.rotateX( xPlus, yPlus, object.angle ) + object.position.x
                             ly1 = MathFunc.rotateY( xPlus, yPlus, object.angle ) + object.position.y
                             lx2 = MathFunc.rotateX( xMinus, yPlus, object.angle ) + object.position.x
                             ly2 = MathFunc.rotateY( xMinus, yPlus, object.angle ) + object.position.y
                         elif self.__comparePoints( cx, cy, x0 - epsilon, y0, x0 + epsilon, y3 ):
-                            print( 'Edge 4' )
                             lx1 = MathFunc.rotateX( xMinus, yPlus, object.angle ) + object.position.x
                             ly1 = MathFunc.rotateY( xMinus, yPlus, object.angle ) + object.position.y
                             lx2 = MathFunc.rotateX( xMinus, yMinus, object.angle ) + object.position.x
@@ -169,7 +163,6 @@ class Physics( tickable.Tickable ):
                             
                         x, y = reflector.Reflector.reflectVector( circle.momentum.x, circle.momentum.y, 
                                                                   lx1, ly1, lx2, ly2 )
-                        print( 'M({:.2f}, {:.2f}), M\'({:.2f}, {:.2f}), P1({:.2f}, {:.2f}), P2({:.2f}, {:.2f}), '.format(circle.momentum.x, circle.momentum.y, x, y, lx1, ly1, lx2, ly2) )
                         circle.momentum = vector2d.Vector2d( x, y )
                 else:
                     raise TypeError( 'Unknown object "{0}" in map'.format(object) )
