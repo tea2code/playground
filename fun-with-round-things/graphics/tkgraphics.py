@@ -63,5 +63,11 @@ class TkGraphics( tickable.Tickable ):
             self.canvas.create_line( collision.x - 5, collision.y,     collision.x + 5, collision.y    , fill = 'red' )
             self.canvas.create_line( collision.x,     collision.y - 5, collision.x,     collision.y + 5, fill = 'red' )
         
+        # Draw force vector to be added by mouse.
+        if data.mousePressed:
+            self.canvas.create_line( data.game.world.start.x, data.game.world.start.y, 
+                                     data.mousePosition.x , data.mousePosition.y, 
+                                     arrow = 'last', fill = 'blue' )
+        
         # Set window title with current frames per second.
         self.window.title( data.windowTitle + ' (FPS ' + str(data.fps) + ')' )
