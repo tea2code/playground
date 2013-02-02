@@ -9,7 +9,3 @@ class GameRules( tickable.Tickable ):
 
         Checks the game rules.'''
         
-        if data.time > data.game.world.timelimit:
-            for circle in data.circles:
-                #circle.stop()
-                pass

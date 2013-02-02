@@ -5,7 +5,7 @@ class Data:
     the current state. 
     
     Member:
-    circles -- A list of circle objects.
+    circle -- The player entity aka the circle.
     collisions -- A list of collision objects.
     deltaTime -- The time difference since the last step.
     fps -- The current frame rate.
@@ -14,7 +14,7 @@ class Data:
     windowTitle -- Title of the window.
     '''
 
-    circles = []
+    circle = None
     collisions = []
     deltaTime = 0
     fps = 0
@@ -25,8 +25,7 @@ class Data:
     def __init__( self ):
         ''' Test: 
         >>> d = Data()
-        >>> len(d.circles)
-        0
+        >>> d.circle
         >>> len(d.collisions)
         0
         >>> d.deltaTime

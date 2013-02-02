@@ -43,4 +43,4 @@ class GameStarter:
         c.setColor( 'Green' )
         c.setMass( mass )
         c.addForce( force )
-        self._data.circles.append( c )
+        self._data.circle = c

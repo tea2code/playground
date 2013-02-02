@@ -33,13 +33,12 @@ class TkGraphics( tickable.Tickable ):
         # Reset everything.
         self.canvas.delete( tkinter.ALL )
         
-        # Draw circles.
-        for circle in data.circles:
-            x = circle.position.x
-            y = circle.position.y
-            r = circle.radius
-            c = circle.color
-            self.canvas.create_oval( x - r, y - r, x + r, y + r, width = r, fill = c, outline = c )
+        # Draw circle.
+        x = data.circle.position.x
+        y = data.circle.position.y
+        r = data.circle.radius
+        c = data.circle.color
+        self.canvas.create_oval( x - r, y - r, x + r, y + r, width = r, fill = c, outline = c )
             
         # Draw target.
         target = data.game.world.target
