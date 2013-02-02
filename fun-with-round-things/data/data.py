@@ -10,6 +10,8 @@ class Data:
     deltaTime -- The time difference since the last step.
     fps -- The current frame rate.
     game -- The game object.
+    mousePosition -- The current mouse position if pressed.
+    mousePressed -- True if mouse button is pressed.
     time -- The accumulated time of all steps.
     windowTitle -- Title of the window.
     '''
@@ -19,6 +21,8 @@ class Data:
     deltaTime = 0
     fps = 0
     game = None
+    mousePosition = None
+    mousePressed = False
     time = 0
     windowTitle = ''
     
@@ -33,6 +37,9 @@ class Data:
         >>> d.fps
         0
         >>> d.game
+        >>> d.mousePosition
+        >>> d.mousePressed
+        False
         >>> d.time
         0
         >>> d.windowTitle
