@@ -65,7 +65,7 @@ class TkGraphics( tickable.Tickable ):
         
         # Draw force vector to be added by mouse.
         if data.mousePressed:
-            self.canvas.create_line( data.game.world.start.x, data.game.world.start.y, 
+            self.canvas.create_line( data.circle.position.x, data.circle.position.y, 
                                      data.mousePosition.x , data.mousePosition.y, 
                                      arrow = 'last', fill = 'blue' )
         

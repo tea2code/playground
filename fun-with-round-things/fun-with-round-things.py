@@ -4,6 +4,7 @@ from fps import fps
 from gamerules import gamerules
 from gamerules import gamestarter
 from graphics import tkgraphics
+from input import tkinput
 from physics import physics
 
 import argparse
@@ -18,6 +19,7 @@ class Fun:
     frameTime -- "Should be" time of one frame.
     gameRules -- The module responsible for game rules.
     graphics -- The module responsible for visualizing the data.
+    input -- The input module.
     loopTime -- The overall refreshing time of the main loop. 
     physics -- The module responsible for physics.
     timestepper -- The frame ticker.
@@ -28,6 +30,7 @@ class Fun:
     frameTime = 1/60
     gameRules = None
     graphics = None
+    input = None
     loopTime = 1
     physics = None
     timestepper = None
@@ -64,6 +67,9 @@ class Fun:
         # Initialize time stepper.
         self.timestepper = timestepper.Timestepper( self.frameTime, self.calculateNextState )
         self.timestepper.time = self.frameTime
+        
+        # Initialize and activate input module.
+        self.input = tkinput.TkInput( self.data, self.graphics.window )
         
     def begin( self ):
         ''' Start the application. '''

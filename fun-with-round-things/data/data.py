@@ -21,7 +21,7 @@ class Data:
     deltaTime = 0
     fps = 0
     game = None
-    mousePosition = None
+    mousePosition = vector2d.Vector2d.nullVector()
     mousePressed = False
     time = 0
     windowTitle = ''
@@ -37,7 +37,8 @@ class Data:
         >>> d.fps
         0
         >>> d.game
-        >>> d.mousePosition
+        >>> d.mousePosition.x == 0 and d.mousePosition.y == 0
+        True
         >>> d.mousePressed
         False
         >>> d.time

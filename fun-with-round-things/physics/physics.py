@@ -27,6 +27,7 @@ class Physics( tickable.Tickable ):
         # Move all circle.
         state = movestate.MoveState()
         state.force = circle.sumForces()
+        circle.clearForces()
         state.mass = circle.mass
         state.momentum = circle.momentum
         state.position = circle.position
@@ -46,7 +47,6 @@ class Physics( tickable.Tickable ):
                                                          rectX, rectY )
         if collision.isCollided: 
             data.collisions.append( collision )
-            circle.clearForces()
             x, y = reflector.Reflector.reflectVector( circle.momentum.x, circle.momentum.y, 
                                                       border, 0, border, height )
             circle.momentum = vector2d.Vector2d( x, y )
@@ -61,7 +61,6 @@ class Physics( tickable.Tickable ):
                                                          rectX, rectY )
         if collision.isCollided: 
             data.collisions.append( collision )
-            circle.clearForces()
             x, y = reflector.Reflector.reflectVector( circle.momentum.x, circle.momentum.y, 
                                                       0, border, width, border )
             circle.momentum = vector2d.Vector2d( x, y )
@@ -76,7 +75,6 @@ class Physics( tickable.Tickable ):
                                                          rectX, rectY )
         if collision.isCollided: 
             data.collisions.append( collision )
-            circle.clearForces()
             x, y = reflector.Reflector.reflectVector( circle.momentum.x, circle.momentum.y, 
                                                       width - border, 0, width - border, height )
             circle.momentum = vector2d.Vector2d( x, y )
@@ -91,7 +89,6 @@ class Physics( tickable.Tickable ):
                                                          rectX, rectY )
         if collision.isCollided: 
             data.collisions.append( collision )
-            circle.clearForces()
             x, y = reflector.Reflector.reflectVector( circle.momentum.x, circle.momentum.y, 
                                                       0, height - border, width, height - border )
             circle.momentum = vector2d.Vector2d( x, y )
@@ -105,7 +102,6 @@ class Physics( tickable.Tickable ):
                                                                  object.position.y )
                 if collision.isCollided: 
                     data.collisions.append( collision )
-                    circle.clearForces()
                     
                     # Calculate all four points of the rectangle without rotation.
                     heightHalf = object.height * 0.5
