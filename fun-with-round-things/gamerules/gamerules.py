@@ -11,4 +11,5 @@ class GameRules( tickable.Tickable ):
         
         if data.time > data.game.world.timelimit:
             for circle in data.circles:
-                circle.stop()
+                #circle.stop()
+                pass

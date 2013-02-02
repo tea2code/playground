@@ -1,3 +1,4 @@
+from common.mathfunc import MathFunc
 from graphics import drawable
 
 import math
@@ -43,9 +44,6 @@ class Rect( drawable.Drawable ):
     def draw( self, canvas ):
         ''' Draws the rect on the given canvas. '''
         
-        radianAngle = math.radians( self.angle )
-        cosAngle = math.cos( radianAngle )
-        sinAngle = math.sin( radianAngle )
         heightHalf = self.height * 0.5
         widthHalf = self.width * 0.5
         xPlus = widthHalf
@@ -54,29 +52,23 @@ class Rect( drawable.Drawable ):
         yMinus = -heightHalf
         
         # Point 0.
-        x0 = self.__transformX( xMinus, yMinus, cosAngle, sinAngle ) + self.x
-        y0 = self.__transformY( xMinus, yMinus, cosAngle, sinAngle ) + self.y
+        x0 = MathFunc.rotateX( xMinus, yMinus, self.angle ) + self.x
+        y0 = MathFunc.rotateY( xMinus, yMinus, self.angle ) + self.y
         
         # Point 1.
-        x1 = self.__transformX( xPlus, yMinus, cosAngle, sinAngle ) + self.x
-        y1 = self.__transformY( xPlus, yMinus, cosAngle, sinAngle ) + self.y
+        x1 = MathFunc.rotateX( xPlus, yMinus, self.angle ) + self.x
+        y1 = MathFunc.rotateY( xPlus, yMinus, self.angle ) + self.y
         
         # Point 2.
-        x2 = self.__transformX( xPlus, yPlus, cosAngle, sinAngle ) + self.x
-        y2 = self.__transformY( xPlus, yPlus, cosAngle, sinAngle ) + self.y
+        x2 = MathFunc.rotateX( xPlus, yPlus, self.angle ) + self.x
+        y2 = MathFunc.rotateY( xPlus, yPlus, self.angle ) + self.y
         
         # Point 3.
-        x3 = self.__transformX( xMinus, yPlus, cosAngle, sinAngle ) + self.x
-        y3 = self.__transformY( xMinus, yPlus, cosAngle, sinAngle ) + self.y
+        x3 = MathFunc.rotateX( xMinus, yPlus, self.angle ) + self.x
+        y3 = MathFunc.rotateY( xMinus, yPlus, self.angle ) + self.y
         
         # Draw.
         canvas.create_polygon( x0, y0, x1, y1, x2, y2, x3, y3, fill = '', outline = 'black' )
-        
-    def __transformX( self, x, y, cosAngle, sinAngle ):
-        return x * cosAngle - y * sinAngle
-        
-    def __transformY( self, x, y, cosAngle, sinAngle ):
-        return y * cosAngle + x * sinAngle 
         
 if __name__ == '__main__':
     print( 'Executing doctest.' )

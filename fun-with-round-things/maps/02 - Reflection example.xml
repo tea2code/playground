@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<game parser="1">
+    <!-- Information of this game. -->
+    <author>tea2code</author>
+    <date>2013-01-14</date>
+    <description>First example of a game map aka level.</description>
+    <name>First Example</name>
+    <version>1</version>
+
+    <!-- The map. -->
+    <world>
+        <height>200</height>
+        <width>400</width>
+        <start>
+            <x>100</x>
+            <y>100</y>
+        </start>
+        <target>
+            <x>390</x>
+            <y>100</y>
+        </target>
+        <timelimit>3</timelimit>
+        <map>
+            <border>30</border>
+        </map>
+    </world>
+</game>

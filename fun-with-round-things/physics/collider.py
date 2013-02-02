@@ -4,9 +4,11 @@ from common import mathfunc
 import math
 
 class Collider:
+    ''' Collects functions which are collision detection related. '''
     
-    def collideCircleRect( self, circleX, circleY, circleRadius, rectAngle, rectHeight, rectWidth, rectX, rectY ):
-        ''' Calculates collision between a circle and a rect. 
+    @staticmethod
+    def collideCircleRect( circleX, circleY, circleRadius, rectAngle, rectHeight, rectWidth, rectX, rectY ):
+        ''' Calculates collision between a circle and a rect. Returns the resulting collision object.
         
         Parameter:
         circleX -- The x-coordinate of the circle center.
@@ -19,16 +21,15 @@ class Collider:
         rectY - The y-coordinate of the rect center.
         
         Test:
-        >>> c = Collider()
-        >>> c.collideCircleRect(-100, -100, 10, 10, 10, 10, 100, 100).isCollided
+        >>> Collider.collideCircleRect(-100, -100, 10, 10, 10, 10, 100, 100).isCollided
         False
-        >>> collision = c.collideCircleRect(10, 10, 5, -45, 10, 4.2, 14.95, 5.05)
+        >>> collision = Collider.collideCircleRect(10, 10, 5, -45, 10, 4.2, 14.95, 5.05)
         >>> collision.isCollided
         True
-        >>> '{0:.2f}'.format(collision.x)
-        '13.47'
-        >>> '{0:.2f}'.format(collision.y)
-        '6.53'
+        >>> print( '{0:.2f}'.format(collision.x) )
+        13.47
+        >>> print( '{0:.2f}'.format(collision.y) )
+        6.53
         '''
         # Keep rectangle static and rotate circle according to angle.
         radianAngle = math.radians( -rectAngle )

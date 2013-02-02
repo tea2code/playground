@@ -39,3 +39,6 @@ Search terms: "free tiles", "free tilesets", "free sprites"...
 - http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
 - http://www.gamedev.net/topic/165537-2d-vector-reflection-/
 - http://stackoverflow.com/questions/1243614/how-do-i-calculate-the-normal-vector-of-a-line-segment
+- http://higherorderfun.com/blog/2012/06/03/math-for-game-programmers-05-vector-cheat-sheet/
+- http://www.yaldex.com/games-programming/0672323699_ch13lev1sec5.html
+- http://stackoverflow.com/questions/1243614/how-do-i-calculate-the-normal-vector-of-a-line-segment

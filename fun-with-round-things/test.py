@@ -17,6 +17,7 @@ import map.mapparser
 import physics.collider
 import physics.collision
 import physics.movestate
+import physics.reflector
 
 if __name__ == '__main__':
     import doctest
@@ -39,3 +40,4 @@ if __name__ == '__main__':
     doctest.testmod( physics.collider )
     doctest.testmod( physics.collision )
     doctest.testmod( physics.movestate )
+    doctest.testmod( physics.reflector )
