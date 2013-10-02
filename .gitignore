@@ -23,3 +23,4 @@ Makefile
 *.tmp
 __pycache__/
 *.py[cod]
+/make-games-with-graphics
