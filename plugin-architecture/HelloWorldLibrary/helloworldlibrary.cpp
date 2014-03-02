@@ -1,17 +1,16 @@
 #include "helloworldlibrary.h"
 
-#include "helloworldlibrary_global.h"
-
-#include "../HelloWorldKernel/pluginmanager.h"
-
 #include <iostream>
 
 HelloWorldLibrary::HelloWorldLibrary()
+{}
+
+void HelloWorldLibrary::greet()
 {
-    std::cout << "Hello Library" << std::endl;
+    std::cout << "Greetings" << std::endl;
 }
 
-extern "C" HELLOWORLDLIBRARY_API void registerPlugin(PluginManager &pluginManager)
+REGISTER_PLUGIN()
 {
-    HelloWorldLibrary test;
+    return std::make_shared<HelloWorldLibrary>();
 }

@@ -4,17 +4,23 @@
 #
 #-------------------------------------------------
 
-QT       -= core gui
-
 TARGET = HelloWorldLibrary
 TEMPLATE = lib
 
-DEFINES += HELLOWORLDLIBRARY_LIBRARY
+DEFINES += PLUGIN_LIBRARY
 
 SOURCES += helloworldlibrary.cpp
 
-HEADERS += helloworldlibrary.h\
-        helloworldlibrary_global.h
+HEADERS += helloworldlibrary.h
+
+# Compiler features.
+QMAKE_CXXFLAGS += -std=c++11
+
+# Activate warnings.
+QMAKE_CXXFLAGS += -pedantic -Wall -Wextra -Werror
+
+# Deactivate some unnecessary warnings. Best to use "-Wno-error=..." and keep warnings.
+QMAKE_CXXFLAGS += -Wno-error=unused-parameter
 
 unix {
     target.path = /usr/lib
