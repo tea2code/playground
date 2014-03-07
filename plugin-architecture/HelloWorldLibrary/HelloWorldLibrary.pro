@@ -21,8 +21,3 @@ QMAKE_CXXFLAGS += -pedantic -Wall -Wextra -Werror
 
 # Deactivate some unnecessary warnings. Best to use "-Wno-error=..." and keep warnings.
 QMAKE_CXXFLAGS += -Wno-error=unused-parameter
-
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-}

@@ -5,12 +5,9 @@
 HelloWorldLibrary::HelloWorldLibrary()
 {}
 
-void HelloWorldLibrary::greet()
+void HelloWorldLibrary::greet(DataInterface* data)
 {
-    std::cout << "Greetings" << std::endl;
+    data->greet("Lalalalala");
 }
 
-REGISTER_PLUGIN()
-{
-    return std::make_shared<HelloWorldLibrary>();
-}
+REGISTER_PLUGIN(HelloWorldLibrary)

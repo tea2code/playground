@@ -25,11 +25,13 @@
 
 #endif
 
+#include "DataInterface.h"
+
 class PluginApi
 {
 public:
     virtual ~PluginApi() {}
-    virtual void greet() = 0;
+    virtual void greet(DataInterface* data) = 0;
 };
 
 #if defined(PLUGIN_API)
@@ -46,7 +48,10 @@ public:
     }\
 */
 
-    #define REGISTER_PLUGIN() extern "C" PLUGIN_API std::shared_ptr<PluginApi> registerPlugin()
+    #define REGISTER_PLUGIN(pluginClass) extern "C" PLUGIN_API std::shared_ptr<PluginApi> registerPlugin()\
+    {\
+        return std::make_shared<pluginClass>();\
+    }\
 
     extern "C" PLUGIN_API int getEngineVersion()
     {

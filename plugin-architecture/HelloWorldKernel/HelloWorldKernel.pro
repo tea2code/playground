@@ -4,12 +4,15 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    PluginManager.cpp
+    PluginManager.cpp \
+    data.cpp
 
 HEADERS += \
     PluginLoader.h \
     PluginApi.h \
-    PluginManager.h
+    PluginManager.h \
+    data.h \
+    DataInterface.h
 
 # Compiler features.
 QMAKE_CXXFLAGS += -std=c++11
