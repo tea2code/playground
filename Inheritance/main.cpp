@@ -2,19 +2,20 @@
 
 #include <iostream>
 #include <iterator>
+#include <memory>
 #include <string>
 #include <vector>
 
 class BaseIterator;
 
-template<class IteratorImpl, class Value>
+template<class IteratorImpl, class Value, class Reference, class Pointer>
 class Iterator
 {
 public:
     typedef Iterator self_type;
     typedef Value value_type;
-    typedef Value& reference;
-    typedef Value* pointer;
+    typedef Reference reference;
+    typedef Pointer pointer;
     typedef std::forward_iterator_tag iterator_category;
     typedef int difference_type;
 
@@ -34,8 +35,10 @@ private:
 class Base
 {
 public:
-    virtual Iterator<BaseIterator, Base> begin() = 0;
-    virtual Iterator<BaseIterator, Base> end() = 0;
+    using BaseItr = Iterator<BaseIterator, std::shared_ptr<Base>, std::shared_ptr<Base>, std::shared_ptr<Base>>;
+
+    virtual BaseItr begin() = 0;
+    virtual BaseItr end() = 0;
 
     virtual std::string name() = 0;
 };
@@ -44,9 +47,9 @@ class BaseIterator
 {
 public:
     typedef BaseIterator self_type;
-    typedef Base value_type;
-    typedef Base& reference;
-    typedef Base* pointer;
+    typedef std::shared_ptr<Base> value_type;
+    typedef std::shared_ptr<Base> reference;
+    typedef std::shared_ptr<Base> pointer;
     typedef std::forward_iterator_tag iterator_category;
     typedef int difference_type;
 
@@ -63,7 +66,7 @@ class Derived;
 class DerivedIterator : public BaseIterator
 {
 public:
-    DerivedIterator(std::vector<Derived*>::iterator iterator) : iterator(iterator) {}
+    DerivedIterator(std::vector<std::shared_ptr<Derived>>::iterator iterator) : iterator(iterator) {}
 
     self_type* operator++();
     self_type* operator++(int junk);
@@ -73,7 +76,7 @@ public:
     bool operator!=(const self_type& rhs);
 
 private:
-    std::vector<Derived*>::iterator iterator;
+    std::vector<std::shared_ptr<Derived>>::iterator iterator;
 };
 
 class Derived : public Base
@@ -81,14 +84,14 @@ class Derived : public Base
 public:
     Derived(std::string name) : n(name) {}
 
-    Iterator<BaseIterator, Base> begin()
+    Base::BaseItr begin()
     {
-        return Iterator<BaseIterator, Base>(new DerivedIterator(v.begin()));
+        return Base::BaseItr(new DerivedIterator(v.begin()));
     }
 
-    Iterator<BaseIterator, Base> end()
+    Base::BaseItr end()
     {
-        return Iterator<BaseIterator, Base>(new DerivedIterator(v.end()));
+        return Base::BaseItr(new DerivedIterator(v.end()));
     }
 
     std::string name()
@@ -96,29 +99,29 @@ public:
         return n;
     }
 
-    std::vector<Derived*> v;
+    std::vector<std::shared_ptr<Derived>> v;
     std::string n;
 };
 
 DerivedIterator::self_type* DerivedIterator::operator++() { self_type* i = this; iterator++; return i; }
 DerivedIterator::self_type* DerivedIterator::operator++(int) { iterator++; return this; }
-DerivedIterator::reference DerivedIterator::operator*() { return *(*iterator); }
+DerivedIterator::reference DerivedIterator::operator*() { return *iterator; }
 DerivedIterator::pointer DerivedIterator::operator->() { return *iterator; }
 bool DerivedIterator::operator==(const BaseIterator::self_type& rhs) { return iterator == dynamic_cast<const DerivedIterator&>(rhs).iterator; }
 bool DerivedIterator::operator!=(const BaseIterator::self_type& rhs) { return iterator != dynamic_cast<const DerivedIterator&>(rhs).iterator; }
 
 int main()
 {
-    Derived* derived = new Derived("1");
-    derived->v.push_back(new Derived("2"));
-    derived->v.push_back(new Derived("4"));
-    derived->v.push_back(new Derived("3"));
-    derived->v.push_back(new Derived("1"));
+    std::shared_ptr<Derived> derived = std::make_shared<Derived>("1");
+    derived->v.push_back(std::make_shared<Derived>("2"));
+    derived->v.push_back(std::make_shared<Derived>("4"));
+    derived->v.push_back(std::make_shared<Derived>("3"));
+    derived->v.push_back(std::make_shared<Derived>("1"));
 
-    Base* base = derived;
-    for(auto& value : *base)
+    std::shared_ptr<Base> base = derived;
+    for(const auto& value : *base)
     {
-        std::cout << value.name() << std::endl;
+        std::cout << value->name() << std::endl;
     }
 
     std::cout << std::distance(base->begin(), base->end()) << std::endl;
