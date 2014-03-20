@@ -1,5 +1,6 @@
 #include <boost/iterator/transform_iterator.hpp>
 
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <memory>
@@ -112,6 +113,8 @@ bool DerivedIterator::operator!=(const BaseIterator::self_type& rhs) { return it
 
 int main()
 {
+    // Our
+
     std::shared_ptr<Derived> derived = std::make_shared<Derived>("1");
     derived->v.push_back(std::make_shared<Derived>("2"));
     derived->v.push_back(std::make_shared<Derived>("4"));
@@ -125,6 +128,31 @@ int main()
     }
 
     std::cout << std::distance(base->begin(), base->end()) << std::endl;
+    std::cout << std::endl;
+
+    // Vector
+
+    std::vector<std::shared_ptr<Derived>> v = derived->v;
+
+    for(const auto& value : v)
+    {
+        std::cout << value->name() << std::endl;
+    }
+
+    std::cout << std::distance(v.begin(), v.end()) << std::endl;
+    std::cout << std::endl;
+
+    // Vector sorted
+
+    std::sort(v.begin(), v.end());
+
+    for(const auto& value : v)
+    {
+        std::cout << value->name() << std::endl;
+    }
+
+    std::cout << std::distance(v.begin(), v.end()) << std::endl;
+    std::cout << std::endl;
 
     return 0;
 }
